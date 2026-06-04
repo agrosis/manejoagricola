@@ -1,0 +1,2061 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manejo Fitossanitário — Soja, Milho, Cana-de-Açúcar e Café · Brasil 2024/25</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+:root {
+  --pet: #0b1e2d;
+  --pet2: #122333;
+  --pet3: #1a3347;
+  --lime: #a8c820;
+  --lime2: #c8e040;
+  --lime3: #dff060;
+  --teal: #1d9e75;
+  --coral: #d85a30;
+  --blue: #185fa5;
+  --amber: #ba7517;
+  --ink: #0f1f2e;
+  --ink2: #243d52;
+  --ink3: #3d5f75;
+  --muted: #6a8898;
+  --border: rgba(168,200,32,0.2);
+  --border2: rgba(255,255,255,0.08);
+  --surface: rgba(255,255,255,0.04);
+  --surface2: rgba(255,255,255,0.07);
+  --r: 6px;
+  --r2: 10px;
+  --r3: 14px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--pet);
+  color: #e8f0f5;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  line-height: 1.65;
+  min-height: 100vh;
+}
+
+/* ── LAYOUT ── */
+.page-wrap { max-width: 1120px; margin: 0 auto; padding: 0 2rem 4rem; }
+
+/* ── COVER ── */
+.cover {
+  position: relative;
+  padding: 5rem 0 4rem;
+  border-bottom: 1px solid var(--border);
+  overflow: hidden;
+}
+.cover::before {
+  content: '';
+  position: absolute;
+  top: -120px; right: -200px;
+  width: 600px; height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(168,200,32,0.07) 0%, transparent 70%);
+  pointer-events: none;
+}
+.cover::after {
+  content: '';
+  position: absolute;
+  bottom: -80px; left: -100px;
+  width: 400px; height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(29,158,117,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.cover-tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(168,200,32,0.12);
+  border: 1px solid rgba(168,200,32,0.3);
+  border-radius: 20px;
+  padding: 5px 14px;
+  font-size: 11px; font-weight: 600; letter-spacing: 0.8px;
+  color: var(--lime2); text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+.cover-tag::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--lime); }
+.cover h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  line-height: 1.12;
+  color: #fff;
+  letter-spacing: -0.5px;
+  max-width: 780px;
+  margin-bottom: 1.25rem;
+}
+.cover h1 em { font-style: italic; color: var(--lime2); }
+.cover-sub {
+  font-size: 15px; color: rgba(232,240,245,0.65);
+  max-width: 620px; line-height: 1.7;
+  margin-bottom: 2rem;
+}
+.cover-meta {
+  display: flex; gap: 2rem; flex-wrap: wrap;
+  font-size: 12px; color: var(--muted);
+}
+.cover-meta span { display: flex; align-items: center; gap: 6px; }
+.cover-meta span::before { content: ''; width: 4px; height: 4px; border-radius: 50%; background: var(--lime); }
+
+/* ── NAV ── */
+.sticky-nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(11,30,45,0.96);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border2);
+  padding: 0;
+}
+.nav-inner {
+  max-width: 1120px; margin: 0 auto; padding: 0 2rem;
+  display: flex; gap: 0; overflow-x: auto;
+}
+.nav-inner::-webkit-scrollbar { display: none; }
+.nav-btn {
+  background: none; border: none;
+  padding: 14px 20px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px; font-weight: 500;
+  color: rgba(232,240,245,0.5);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all .18s; white-space: nowrap;
+  letter-spacing: 0.2px;
+}
+.nav-btn:hover { color: rgba(232,240,245,0.85); }
+.nav-btn.active { color: var(--lime2); border-bottom-color: var(--lime); }
+
+/* ── SECTIONS ── */
+.section { display: none; padding-top: 2.5rem; }
+.section.active { display: block; }
+
+.sect-header {
+  display: flex; align-items: flex-start; gap: 1rem;
+  margin-bottom: 2rem;
+}
+.sect-num {
+  font-family: 'DM Serif Display', serif;
+  font-size: 3rem; font-style: italic;
+  color: rgba(168,200,32,0.2);
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: -4px;
+}
+.sect-title-block h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.75rem; color: #fff; line-height: 1.2;
+  letter-spacing: -0.3px;
+}
+.sect-title-block p {
+  font-size: 13px; color: var(--muted); margin-top: 4px;
+}
+
+/* ── INNER TABS ── */
+.tab-strip {
+  display: flex; gap: 6px; flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--border2);
+}
+.tab-btn {
+  background: var(--surface);
+  border: 1px solid var(--border2);
+  border-radius: var(--r);
+  padding: 6px 14px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px; font-weight: 500;
+  color: rgba(232,240,245,0.55);
+  cursor: pointer; transition: all .15s;
+}
+.tab-btn:hover { color: #e8f0f5; border-color: rgba(255,255,255,0.15); }
+.tab-btn.active {
+  background: rgba(168,200,32,0.15);
+  border-color: rgba(168,200,32,0.4);
+  color: var(--lime2);
+}
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+
+/* ── CARDS ── */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border2);
+  border-radius: var(--r3);
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1rem;
+}
+.card-title {
+  font-size: 13px; font-weight: 600; color: #e8f0f5;
+  margin-bottom: 1rem;
+  display: flex; align-items: center; gap: 8px;
+}
+.card-title::before {
+  content: '';
+  width: 3px; height: 16px;
+  background: var(--lime);
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+.grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1rem; margin-bottom: 1rem; }
+.grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: .875rem; margin-bottom: 1.25rem; }
+.grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: .875rem; margin-bottom: 1.25rem; }
+
+/* ── KPI ── */
+.kpi {
+  background: var(--surface);
+  border: 1px solid var(--border2);
+  border-radius: var(--r2);
+  padding: .875rem 1rem;
+  position: relative;
+  overflow: hidden;
+}
+.kpi::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0;
+  height: 2px; background: var(--lime);
+  opacity: 0.6;
+}
+.kpi .lbl { font-size: 10px; text-transform: uppercase; letter-spacing: 0.6px; color: var(--muted); font-weight: 600; }
+.kpi .val { font-size: 1.5rem; font-weight: 300; color: #fff; margin-top: 4px; line-height: 1.1; font-family: 'DM Serif Display', serif; }
+.kpi .sub { font-size: 11px; color: var(--muted); margin-top: 3px; }
+
+/* ── TABLES ── */
+.tbl-wrap { overflow-x: auto; border-radius: var(--r2); border: 1px solid var(--border2); }
+table { width: 100%; border-collapse: collapse; font-size: 12px; }
+thead tr { background: rgba(168,200,32,0.08); }
+th {
+  padding: 9px 12px;
+  text-align: left;
+  font-size: 10px; font-weight: 600; letter-spacing: 0.5px;
+  color: var(--lime2); text-transform: uppercase;
+  white-space: nowrap;
+}
+td {
+  padding: 8px 12px;
+  border-top: 1px solid var(--border2);
+  color: rgba(232,240,245,0.85);
+  vertical-align: top;
+  line-height: 1.5;
+}
+td em { font-style: italic; color: var(--muted); font-size: 11px; }
+tr:hover td { background: rgba(255,255,255,0.025); }
+
+/* ── TAGS ── */
+.tag {
+  display: inline-block;
+  font-size: 10px; font-weight: 600;
+  padding: 2px 8px; border-radius: 10px;
+  white-space: nowrap;
+}
+.tag-g { background: rgba(168,200,32,0.15); color: #c8e040; border: 1px solid rgba(168,200,32,0.25); }
+.tag-b { background: rgba(24,95,165,0.2); color: #7ab8f5; border: 1px solid rgba(24,95,165,0.3); }
+.tag-r { background: rgba(216,90,48,0.2); color: #f5a07a; border: 1px solid rgba(216,90,48,0.3); }
+.tag-a { background: rgba(186,117,23,0.2); color: #f5c97a; border: 1px solid rgba(186,117,23,0.3); }
+.tag-t { background: rgba(29,158,117,0.2); color: #6de0b8; border: 1px solid rgba(29,158,117,0.3); }
+.tag-w { background: rgba(255,255,255,0.08); color: rgba(232,240,245,0.7); border: 1px solid rgba(255,255,255,0.12); }
+.tag-p { background: rgba(127,119,221,0.2); color: #c0bdf5; border: 1px solid rgba(127,119,221,0.3); }
+
+/* ── ALERTS ── */
+.alert, .info, .success, .warn {
+  border-radius: 0 var(--r2) var(--r2) 0;
+  padding: .875rem 1.125rem;
+  font-size: 12.5px;
+  line-height: 1.65;
+  margin-bottom: .875rem;
+}
+.alert { background: rgba(216,90,48,0.1); border-left: 3px solid var(--coral); color: rgba(245,160,122,0.9); }
+.info  { background: rgba(24,95,165,0.1); border-left: 3px solid var(--blue);  color: rgba(122,184,245,0.9); }
+.success{ background: rgba(168,200,32,0.08); border-left: 3px solid var(--lime); color: rgba(200,224,64,0.9); }
+.warn  { background: rgba(186,117,23,0.1); border-left: 3px solid var(--amber); color: rgba(245,201,122,0.9); }
+.alert strong, .info strong, .success strong, .warn strong { font-weight: 600; display: block; margin-bottom: 3px; }
+
+/* ── CALENDAR ── */
+.cal-wrap { overflow-x: auto; padding-bottom: 4px; }
+.cal-table { border-collapse: collapse; font-size: 10.5px; min-width: 800px; width: 100%; }
+.cal-table th {
+  padding: 5px 3px; text-align: center;
+  font-size: 9.5px; font-weight: 600; letter-spacing: 0.3px;
+  color: var(--muted); background: transparent;
+  border-bottom: 1px solid var(--border2);
+  white-space: nowrap;
+}
+.cal-table td { padding: 2px 2px; border: none; background: transparent; }
+.cal-row-label {
+  font-size: 11px; font-weight: 500; color: #e8f0f5;
+  padding: 4px 10px 4px 0 !important;
+  min-width: 120px; white-space: nowrap;
+  border-bottom: 1px solid var(--border2) !important;
+}
+.cal-row-sub { font-size: 9.5px; color: var(--muted); font-weight: 400; display: block; }
+.cal-cell {
+  height: 20px; border-radius: 3px;
+  position: relative; cursor: default;
+  transition: opacity .12s;
+}
+.cal-cell:hover { opacity: 0.8; }
+.c-herb  { background: #3b6d11; }
+.c-herb-l{ background: rgba(59,109,17,0.35); border: 1px solid rgba(59,109,17,0.5); }
+.c-fung  { background: #185fa5; }
+.c-fung-l{ background: rgba(24,95,165,0.3); border: 1px solid rgba(24,95,165,0.5); }
+.c-insec { background: #993c1d; }
+.c-insec-l{ background: rgba(153,60,29,0.3); border: 1px solid rgba(153,60,29,0.5); }
+.c-plant { background: rgba(29,158,117,0.25); border: 1px solid rgba(29,158,117,0.5); }
+.c-harvest{ background: rgba(186,117,23,0.3); border: 1px solid rgba(186,117,23,0.5); }
+.c-empty { background: transparent; }
+
+.cal-legend {
+  display: flex; gap: 16px; flex-wrap: wrap;
+  margin: 12px 0 8px;
+  font-size: 10.5px; color: var(--muted);
+  align-items: center;
+}
+.cal-legend-item { display: flex; align-items: center; gap: 5px; }
+.cal-swatch { width: 24px; height: 10px; border-radius: 2px; flex-shrink: 0; }
+
+/* ── ROTATION BOX ── */
+.rot-box { margin-bottom: .875rem; }
+.rot-step {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: .75rem;
+  background: var(--surface);
+  border: 1px solid var(--border2);
+  border-radius: var(--r2);
+  margin-bottom: 6px;
+  font-size: 12px;
+}
+.rot-step:last-child { margin-bottom: 0; }
+.rot-num {
+  width: 24px; height: 24px; flex-shrink: 0;
+  background: rgba(168,200,32,0.15);
+  border: 1px solid rgba(168,200,32,0.3);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 600; color: var(--lime2);
+}
+.rot-step strong { color: #e8f0f5; font-weight: 600; }
+.rot-step p { color: rgba(232,240,245,0.65); }
+
+/* ── PHASE ROWS ── */
+.phase-row {
+  display: grid; grid-template-columns: 90px 1fr;
+  gap: 10px; margin-bottom: 8px; align-items: start;
+}
+.phase-tag {
+  font-size: 10px; font-weight: 600;
+  padding: 4px 8px; border-radius: var(--r);
+  text-align: center;
+  background: rgba(168,200,32,0.12);
+  border: 1px solid rgba(168,200,32,0.25);
+  color: var(--lime2); white-space: nowrap;
+}
+.phase-content {
+  font-size: 12.5px; color: rgba(232,240,245,0.7); line-height: 1.55;
+}
+.phase-content strong { color: #e8f0f5; font-weight: 500; }
+
+/* ── DIVIDERS ── */
+.divider {
+  border: none;
+  border-top: 1px solid var(--border2);
+  margin: 1.5rem 0;
+}
+.subsect {
+  font-size: 13px; font-weight: 600; color: var(--lime2);
+  margin: 1.5rem 0 .875rem;
+  display: flex; align-items: center; gap: 8px;
+}
+.subsect::after {
+  content: '';
+  flex: 1; height: 1px;
+  background: linear-gradient(to right, rgba(168,200,32,0.2), transparent);
+}
+
+/* ── SOURCE NOTE ── */
+.source-note {
+  font-size: 10.5px; color: var(--muted);
+  padding-top: .75rem; margin-top: .75rem;
+  border-top: 1px solid var(--border2);
+  line-height: 1.55;
+}
+
+/* ── FOOTER ── */
+.footer {
+  border-top: 1px solid var(--border2);
+  padding: 2rem 0 1.5rem;
+  margin-top: 3rem;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 1rem;
+}
+.footer-logo {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1rem; color: var(--lime2);
+  letter-spacing: -0.2px;
+}
+.footer-meta {
+  font-size: 11px; color: var(--muted);
+  text-align: right;
+}
+
+/* ── PRINT ── */
+@media print {
+  body { background: #fff; color: #111; font-size: 11px; }
+  .sticky-nav { display: none; }
+  .section { display: block !important; page-break-before: always; }
+  .section:first-of-type { page-break-before: avoid; }
+  .tab-content { display: block !important; }
+  .card, .kpi { border-color: #ddd; background: #f9f9f9; }
+  th { color: #333; }
+  td { color: #222; border-color: #eee; }
+  .tag-g { background: #edf5d0; color: #2a5000; }
+  .tag-b { background: #d0e4f7; color: #0a3e6e; }
+  .tag-r { background: #fde8d8; color: #7d2000; }
+  h1, h2 { color: #0b1e2d; }
+  .cover h1 { font-size: 2rem; }
+  .cover::before, .cover::after { display: none; }
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.section.active > * {
+  animation: fadeUp .3s ease both;
+}
+.section.active > *:nth-child(2) { animation-delay: .04s; }
+.section.active > *:nth-child(3) { animation-delay: .08s; }
+.section.active > *:nth-child(4) { animation-delay: .12s; }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════
+     STICKY NAV
+═══════════════════════════════════════════════ -->
+<nav class="sticky-nav" role="navigation" aria-label="Navegação principal">
+  <div class="nav-inner">
+    <button class="nav-btn active" onclick="showSection('capa')">Home</button>
+    <button class="nav-btn" onclick="showSection('soja')">Soja</button>
+    <button class="nav-btn" onclick="showSection('milho')">Milho</button>
+    <button class="nav-btn" onclick="showSection('cana')">Cana-de-Açúcar</button>
+    <button class="nav-btn" onclick="showSection('cafe')">Café</button>
+    <button class="nav-btn" onclick="showSection('comparativo')">Comparativo & Custos</button>
+    <button class="nav-btn" onclick="showSection('resistencia')">Resistência</button>
+    <button class="nav-btn" onclick="showSection('fontes')">Fontes</button>
+  </div>
+</nav>
+
+<div class="page-wrap">
+
+<!-- ═══════════════════════════════════════════════
+     CAPA
+═══════════════════════════════════════════════ -->
+<div id="capa" class="section active">
+  <div class="cover">
+    <div class="cover-tag">Relatório Técnico Agronômico</div>
+    <h1>Manejo Fitossanitário<br><em>das Principais Culturas</em><br>do Brasil</h1>
+    <p class="cover-sub">
+      Guia técnico completo de herbicidas, fungicidas e inseticidas para soja, milho, cana-de-açúcar e café — cobrindo épocas de aplicação, ingredientes ativos, mecanismos de ação, doses, manejo de resistência e custos por hectare. Safra 2024/25.
+    </p>
+    <div class="cover-meta">
+      <span>Safra 2024/25</span>
+      <span>4 culturas · 12 categorias de produtos</span>
+      <span>Fontes: CONAB · IBGE · Embrapa · MAPA · Procafé · CTC · Sindiveg</span>
+    </div>
+    <div style="margin-top:1.5rem;font-size:11px;color:rgba(232,240,245,0.28);letter-spacing:.3px">Thiago Mendonça</div>
+  </div>
+
+  <div style="padding-top: 2.5rem;">
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-title">Escopo do documento</div>
+        <p style="font-size:13px; color: rgba(232,240,245,0.7); line-height:1.7; margin-bottom:1rem">
+          Este relatório abrange o manejo fitossanitário integrado das quatro principais culturas comerciais do Brasil em área e valor bruto de produção. Para cada cultura são detalhados:
+        </p>
+        <ul style="font-size:12.5px; color: rgba(232,240,245,0.65); line-height:1.9; padding-left:1.25rem;">
+          <li>Calendário de aplicações por mês e estádio fenológico</li>
+          <li>Ingredientes ativos recomendados com doses práticas</li>
+          <li>Mecanismos de ação (HRAC / FRAC / IRAC)</li>
+          <li>Programas de rotação para manejo de resistência</li>
+          <li>Biológicos e controle integrado de pragas (MIP)</li>
+          <li>Custos por aplicação e por safra (R$/ha)</li>
+          <li>Alertas regulatórios e de resistência confirmada</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title">Culturas abordadas</div>
+        <div class="grid-2" style="gap:.625rem; margin-bottom:0">
+          <div style="background:rgba(168,200,32,0.08);border:1px solid rgba(168,200,32,0.2);border-radius:var(--r2);padding:.875rem">
+            <div style="font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:var(--lime2);font-weight:600;margin-bottom:4px">Soja</div>
+            <div style="font-size:11px;color:var(--muted)">47,4 M ha · safra Out–Mar<br>Custo defensivos: R$ 890–1.950/ha</div>
+          </div>
+          <div style="background:rgba(29,158,117,0.08);border:1px solid rgba(29,158,117,0.2);border-radius:var(--r2);padding:.875rem">
+            <div style="font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:#6de0b8;font-weight:600;margin-bottom:4px">Milho</div>
+            <div style="font-size:11px;color:var(--muted)">22,1 M ha · 1ª e 2ª safra<br>Custo defensivos: R$ 680–1.550/ha</div>
+          </div>
+          <div style="background:rgba(216,90,48,0.08);border:1px solid rgba(216,90,48,0.2);border-radius:var(--r2);padding:.875rem">
+            <div style="font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:#f5a07a;font-weight:600;margin-bottom:4px">Cana-de-Açúcar</div>
+            <div style="font-size:11px;color:var(--muted)">9,1 M ha · ciclo perene<br>Custo defensivos: R$ 440–860/ha/corte</div>
+          </div>
+          <div style="background:rgba(186,117,23,0.08);border:1px solid rgba(186,117,23,0.2);border-radius:var(--r2);padding:.875rem">
+            <div style="font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:#f5c97a;font-weight:600;margin-bottom:4px">Café</div>
+            <div style="font-size:11px;color:var(--muted)">2,2 M ha · arábica + conilon<br>Custo defensivos: R$ 910–2.100/ha/ano</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Convenções de classificação usadas neste documento</div>
+      <div class="grid-3" style="gap:.75rem; margin-bottom:0">
+        <div>
+          <div style="font-size:11px;font-weight:600;color:var(--lime2);margin-bottom:6px">HRAC — Herbicidas</div>
+          <div style="font-size:11px;color:var(--muted);line-height:1.7">
+            Herbicide Resistance Action Committee. Classifica herbicidas por mecanismo de ação (ex.: HRAC 9 = inibidor da EPSPS = glifosato). Fundamental para rotação e manejo de resistência.
+          </div>
+        </div>
+        <div>
+          <div style="font-size:11px;font-weight:600;color:#7ab8f5;margin-bottom:6px">FRAC — Fungicidas</div>
+          <div style="font-size:11px;color:var(--muted);line-height:1.7">
+            Fungicide Resistance Action Committee. Ex.: FRAC 3 = DMI/triazol, FRAC 11 = estrobilurina, FRAC 7 = SDHI. Misturar grupos distintos é prática obrigatória na soja.
+          </div>
+        </div>
+        <div>
+          <div style="font-size:11px;font-weight:600;color:#f5a07a;margin-bottom:6px">IRAC — Inseticidas</div>
+          <div style="font-size:11px;color:var(--muted);line-height:1.7">
+            Insecticide Resistance Action Committee. Ex.: IRAC 28 = diamidas (clorantraniliprole), IRAC 3 = piretroides, IRAC 4 = neonicotinóides. Rotação entre grupos é obrigatória.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="source-note">
+      <strong style="color:rgba(232,240,245,0.8)">Premissas gerais:</strong> doses e recomendações refletem as práticas predominantes no Centro-Sul do Brasil (MT, GO, PR, RS, SP, MG). Regiões como MATOPIBA e Norte podem apresentar janelas deslocadas em 1–2 meses. Custos em R$/ha referentes à safra 2024/25 (cotações Out–Nov/2024). Todos os produtos mencionados devem ser aplicados conforme bula registrada no MAPA. Este documento tem fins informativos e de inteligência de mercado.
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     SOJA
+═══════════════════════════════════════════════ -->
+<div id="soja" class="section">
+  <div class="sect-header">
+    <div class="sect-num">01</div>
+    <div class="sect-title-block">
+      <h2>Soja</h2>
+      <p>47,4 milhões de hectares · safra principal outubro–março · Centro-Oeste, Sul e MATOPIBA</p>
+    </div>
+  </div>
+
+  <div class="tab-strip">
+    <button class="tab-btn active" onclick="showTab('soja','herb')">Herbicidas</button>
+    <button class="tab-btn" onclick="showTab('soja','fung')">Fungicidas</button>
+    <button class="tab-btn" onclick="showTab('soja','insec')">Inseticidas</button>
+    <button class="tab-btn" onclick="showTab('soja','cal')">Calendário</button>
+  </div>
+
+  <!-- SOJA HERBICIDAS -->
+  <div id="soja-herb" class="tab-content active">
+    <div class="alert">
+      <strong>Período crítico de controle: V0–V4</strong>
+      Da emergência até a 4ª folha trifoliolada. Após esse ponto a cultura fecha o dossel e suprime naturalmente as daninhas. Atraso de controle nessa janela pode custar 15–40% da produtividade.
+    </div>
+    <div class="subsect">Dessecação pré-plantio</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Ingrediente ativo</th><th>Dose</th><th>Alvo</th><th>Mecanismo</th><th>Observações</th></tr></thead>
+        <tbody>
+          <tr><td>Glifosato (sal K ou IPA)</td><td>2,0–4,0 L/ha<br><em>480 g e.a./L</em></td><td>Gramíneas + folhas largas anuais</td><td><span class="tag tag-b">HRAC 9 — inibidor EPSPS</span></td><td>Aplicar 7–10 dias antes do plantio; exige boa cobertura de gotas; biótipo resistente frequente no Brasil</td></tr>
+          <tr><td>2,4-D amina</td><td>1,0–2,0 L/ha</td><td>Folhas largas (dicotiledôneas)</td><td><span class="tag tag-r">HRAC 4 — auxina sintética</span></td><td>Mistura com glifosato; respeitar carência mínima de 10 dias pré-plantio para evitar fitotoxidez na soja</td></tr>
+          <tr><td>Paraquat</td><td>2,0–3,0 L/ha</td><td>Amplo espectro, dessecante de contato</td><td><span class="tag tag-r">HRAC 22 — inibidor PSI</span></td><td>Ação rápida; sem efeito residual; proibição gradual sob debate regulatório no Brasil</td></tr>
+          <tr><td>Flumioxazina</td><td>50–80 g/ha</td><td>Folhas largas + gramíneas</td><td><span class="tag tag-p">HRAC 14 — inibidor PPO</span></td><td>Complementa glifosato; residual no solo; risco de seletividade com alta umidade pós-aplicação</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="subsect" style="margin-top:1.5rem">Pré-emergência</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Ingrediente ativo</th><th>Dose</th><th>Alvo principal</th><th>Mecanismo</th><th>Residual no solo</th></tr></thead>
+        <tbody>
+          <tr><td>Metribuzin</td><td>480–960 g/ha</td><td>Folhas largas + algumas gramíneas</td><td><span class="tag tag-w">HRAC 5 — inibidor PSII</span></td><td>30–60 dias; lixivia em solos arenosos &lt;20% argila</td></tr>
+          <tr><td>S-metolacloro</td><td>1,2–1,8 L/ha</td><td>Gramíneas anuais (capim-colchão, marmelada)</td><td><span class="tag tag-a">HRAC 15 — inibidor VLCFA</span></td><td>45–90 dias; excelente em solos argilosos</td></tr>
+          <tr><td>Clomazone</td><td>0,8–1,2 L/ha</td><td>Gramíneas + algumas dicotiledôneas</td><td><span class="tag tag-a">HRAC 13 — inibidor carotenóides</span></td><td>45–75 dias; risco de deriva (branqueamento em culturas vizinhas)</td></tr>
+          <tr><td>Imazaquin</td><td>140–200 g/ha</td><td>Folhas largas resistentes ao glifosato</td><td><span class="tag tag-b">HRAC 2 — inibidor ALS</span></td><td>60–90 dias; cuidado na rotação com milho (carência mínima 120 dias)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="subsect" style="margin-top:1.5rem">Pós-emergência (V1–V4)</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>IA</th><th>Dose</th><th>Alvo</th><th>Mecanismo</th><th>Seletividade / restrições</th></tr></thead>
+        <tbody>
+          <tr><td>Glifosato (soja RR/Intacta)</td><td>1,5–3,0 L/ha</td><td>Gramíneas + folhas largas</td><td><span class="tag tag-b">HRAC 9</span></td><td>Exclusivo em soja transgênica RR; máximo 2 aplicações/ciclo</td></tr>
+          <tr><td>Fluazifop-p-butyl</td><td>0,8–1,5 L/ha</td><td>Gramíneas (braquiária, cevada-do-campo)</td><td><span class="tag tag-t">HRAC 1 — inibidor ACCase</span></td><td>Seletivo para soja convencional e RR; efetivo em gramíneas difíceis</td></tr>
+          <tr><td>Lactofen</td><td>168–360 g/ha</td><td>Folhas largas (trapoeraba, amendoim-bravo)</td><td><span class="tag tag-p">HRAC 14 — inibidor PPO</span></td><td>Leve fitotoxidez transitória; aplicar até V3; não misturar com cletodim</td></tr>
+          <tr><td>Cloransulam-metil</td><td>26–40 g/ha</td><td>Folhas largas resistentes (trapoeraba, buva)</td><td><span class="tag tag-b">HRAC 2 — inibidor ALS</span></td><td>Não misturar com bentazon; excelente para trapoeraba e buva biótipos suscetíveis</td></tr>
+          <tr><td>Bentazon</td><td>720–960 g/ha</td><td>Folhas largas (tiririca, trevo)</td><td><span class="tag tag-w">HRAC 5 — inibidor PSII</span></td><td>Não usar acima de 30°C; seletivo; efetivo em espécies de difícil controle</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="success" style="margin-top:1rem">
+      <strong>Espécies problemáticas no Brasil</strong>
+      Buva (Conyza spp.) com resistência múltipla a HRAC 9+2+4+27 em MT, PR, RS — controle exige programa de outono/inverno com paraquat + diurón. Capim-amargoso (Digitaria insularis) resistente ao glifosato — fluazifop ou haloxifop em pós-emergência. Leiteiro (Euphorbia heterophylla) com resistência ao ALS — usar PPO inibidores (lactofen, flumioxazina).
+    </div>
+    <div class="source-note">Fontes: Embrapa Soja, SBCPD (Sociedade Brasileira da Ciência das Plantas Daninhas), HRAC BR 2024, CONAB.</div>
+  </div>
+
+  <!-- SOJA FUNGICIDAS -->
+  <div id="soja-fung" class="tab-content">
+    <div class="alert">
+      <strong>Ferrugem asiática (Phakopsora pachyrhizi) — a doença mais cara da agricultura tropical</strong>
+      Potencial de perda de R$ 20–30 bi/ano sem controle no Brasil. Custo do programa fungicida: R$ 400–900/ha por safra. Retorno médio sobre o investimento: 5–12 sacas/ha adicionais com controle adequado.
+    </div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Grupo / IA</th><th>Dose</th><th>Modo de ação</th><th>Estádio ideal</th><th>Eficiência ferrugem</th></tr></thead>
+        <tbody>
+          <tr><td>Piraclostrobina + Epoxiconazol<br><em>estrobilurina + triazol</em></td><td>0,5–0,75 L/ha</td><td><span class="tag tag-b">FRAC 11+3</span></td><td>R1 (1ª aplic.) ou R3</td><td>Alta — padrão histórico de mercado</td></tr>
+          <tr><td>Fluxapiroxade + Piraclostrobina<br><em>SDHI + estrobilurina</em></td><td>0,3–0,5 L/ha</td><td><span class="tag tag-p">FRAC 7+11 — inib. complexo II+III</span></td><td>Preventivo R1 ou R3</td><td>Muito alta — persistência 14–18 dias</td></tr>
+          <tr><td>Mefentrifluconazol + Piraclostrobina<br><em>triazol nova geração</em></td><td>0,75–1,0 L/ha</td><td><span class="tag tag-b">FRAC 3+11</span></td><td>R1–R3</td><td>Muito alta — melhor penetração no tecido folicular</td></tr>
+          <tr><td>Tebuconazol<br><em>triazol solo</em></td><td>0,75–1,0 L/ha</td><td><span class="tag tag-b">FRAC 3 — DMI</span></td><td>Curativo precoce (até 72h pós-infecção)</td><td>Média — sensibilidade reduzida documentada; não usar isolado</td></tr>
+          <tr><td>Azoxistrobina + Ciproconazol</td><td>0,3 L/ha</td><td><span class="tag tag-b">FRAC 11+3</span></td><td>Preventivo R1</td><td>Boa — atenção à sensibilidade reduzida em alguns biótipos</td></tr>
+          <tr><td>Isofetamid + Tetraconazol<br><em>SDHI nova geração</em></td><td>0,6 L/ha</td><td><span class="tag tag-p">FRAC 7+3</span></td><td>R1–R3</td><td>Alta — nova opção de rotação; preservar FRAC 7 ao máximo</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="subsect" style="margin-top:1.5rem">Programa padrão de 3 aplicações — Centro-Oeste</div>
+    <div class="grid-2">
+      <div class="rot-box">
+        <div class="rot-step">
+          <div class="rot-num">1</div>
+          <div><strong>R1 — preventiva:</strong><p>SDHI + estrobilurina + triazol (tripla mistura). Meta: zero infecção inicial. Antecipar 5–7 dias se sistema de alerta indicar inóculo próximo.</p></div>
+        </div>
+        <div class="rot-step">
+          <div class="rot-num">2</div>
+          <div><strong>R3 — proteção da granação:</strong><p>Triazol nova geração + estrobilurina. Intervalo de 14–18 dias da 1ª aplicação. Janela de maior retorno econômico.</p></div>
+        </div>
+        <div class="rot-step">
+          <div class="rot-num">3</div>
+          <div><strong>R5.1 — fechamento:</strong><p>SDHI ou triazol (se pressão alta). Intervalo 12–15 dias da 2ª. Apenas se humidade e temperatura favorecerem.</p></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">Outras doenças relevantes</div>
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>Doença</th><th>Agente</th><th>Controle</th></tr></thead>
+            <tbody>
+              <tr><td>Mancha-alvo</td><td><em>Corynespora cassiicola</em></td><td>Triazol + SDHI; variedade resistente</td></tr>
+              <tr><td>Oídio</td><td><em>Erysiphe diffusa</em></td><td>Estrobilurina; baixa pressão no Brasil</td></tr>
+              <tr><td>Podridão-radicular</td><td><em>Phytophthora sojae</em></td><td>Metalaxil-M no tratamento de semente</td></tr>
+              <tr><td>Mofo-branco</td><td><em>Sclerotinia sclerotiorum</em></td><td>Iprodiona, fluazinam; rotação de culturas</td></tr>
+              <tr><td>Antracnose</td><td><em>Colletotrichum truncatum</em></td><td>Tratamento de semente; triazol foliar</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="info">
+      <strong>Monitoramento obrigatório — sistema de alerta de ferrugem</strong>
+      O sistema Embrapa + CÉLERES + FungiAlert deve ser consultado semanalmente durante a safra. A decisão de antecipar ou atrasar a 1ª aplicação depende da data de detecção nos municípios-referência e da precipitação acumulada nas últimas 72 horas. Uma aplicação preventiva realizada 7 dias cedo é sempre mais eficiente do que uma curativa.
+    </div>
+    <div class="source-note">Fontes: Embrapa Soja, FRAC BR 2024, Reunião de Pesquisa de Soja 2024, CropLife Brasil.</div>
+  </div>
+
+  <!-- SOJA INSETICIDAS -->
+  <div id="soja-insec" class="tab-content">
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Praga</th><th>Estádio crítico</th><th>Nível de dano</th><th>IAs recomendados</th><th>IRAC</th></tr></thead>
+        <tbody>
+          <tr><td>Lagarta-da-soja<br><em>Anticarsia gemmatalis</em></td><td>V3–R5</td><td>30% desfolha vegetativo; 15% R1–R5</td><td>Clorantraniliprole, Bt kurstaki, espinosade, metomil</td><td><span class="tag tag-r">28</span> <span class="tag tag-t">11</span> <span class="tag tag-t">5</span></td></tr>
+          <tr><td>Helicoverpa armigera</td><td>R1–R6 (frutos)</td><td>0,5 lagarta/m em R3–R5</td><td>Clorantraniliprole, indoxacarbe, spinetoran, HearNPV (biológico)</td><td><span class="tag tag-r">28 / 22 / 5</span></td></tr>
+          <tr><td>Percevejo marrom e verde<br><em>Euschistus / Nezara</em></td><td>R3–R6 (vagens)</td><td>1 adulto/m de fileira</td><td>Lambdacialotrina, bifentrina, acefato, clorpirifós</td><td><span class="tag tag-w">3 / 1B</span></td></tr>
+          <tr><td>Percevejo-marrom-pequeno<br><em>Piezodorus guildinii</em></td><td>R3–R5</td><td>0,5/m fileira (mais danoso que Nezara)</td><td>Tiametoxam + lambdacialotrina, bifentrina</td><td><span class="tag tag-w">4A+3</span></td></tr>
+          <tr><td>Mosca-branca<br><em>Bemisia tabaci</em></td><td>Vegetativo</td><td>1 adulto/folíolo</td><td>Spiromesifeno, buprofezina, tiametoxam</td><td><span class="tag tag-b">23 / 16 / 4A</span></td></tr>
+          <tr><td>Lagarta-elasmo<br><em>Elasmopalpus lignosellus</em></td><td>V1–V3 (base do caule)</td><td>5% plantas atacadas</td><td>Clorantraniliprole TS, clorpirifós (solo)</td><td><span class="tag tag-r">28</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="subsect" style="margin-top:1.5rem">Tratamento de sementes (TSI)</div>
+    <div class="grid-2">
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>Produto</th><th>Dose</th><th>Alvo</th></tr></thead>
+          <tbody>
+            <tr><td>Imidacloprido + tiodicarbe</td><td>100–200 mL/100 kg semente</td><td>Pragas de solo, cupins, larva-alfinete</td></tr>
+            <tr><td>Tiametoxam</td><td>70–100 mL/100 kg</td><td>Mosca-branca, pulgões iniciais</td></tr>
+            <tr><td>Clorantraniliprole (TS)</td><td>75–150 mL/100 kg</td><td>Lagarta-elasmo, broca inicial de colo</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>Biológico</th><th>Alvo</th><th>Adoção estimada</th></tr></thead>
+          <tbody>
+            <tr><td>Bt (B. thuringiensis kurstaki)</td><td>Anticarsia, Helicoverpa</td><td>~35% área em PR/RS</td></tr>
+            <tr><td>Beauveria bassiana</td><td>Percevejos, mosca-branca</td><td>~15% área em MT</td></tr>
+            <tr><td>HearNPV (vírus)</td><td>Helicoverpa armigera</td><td>~8% área em GO/MT</td></tr>
+            <tr><td>Metarhizium anisopliae</td><td>Cupins, larva-alfinete</td><td>Crescente no solo</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="source-note">Fontes: Embrapa Soja, CRSB (Conselho de Resistência de Soja a Inseticidas), AGROFIT/MAPA 2024.</div>
+  </div>
+
+  <!-- SOJA CALENDÁRIO -->
+  <div id="soja-cal" class="tab-content">
+    <div class="info">
+      <strong>Calendário válido para Centro-Sul (MT, GO, PR, RS)</strong>
+      Safra principal: plantio em outubro–novembro, colheita em fevereiro–março. O calendário exibe dois anos consecutivos (24 meses) para mostrar a sequência completa de manejo.
+    </div>
+    <div class="cal-legend">
+      <div class="cal-legend-item"><div class="cal-swatch c-herb"></div>Herbicida intenso</div>
+      <div class="cal-legend-item"><div class="cal-swatch c-herb-l"></div>Herbicida leve / preventivo</div>
+      <div class="cal-legend-item"><div class="cal-swatch c-fung"></div>Fungicida intenso</div>
+      <div class="cal-legend-item"><div class="cal-swatch c-fung-l"></div>Fungicida leve</div>
+      <div class="cal-legend-item"><div class="cal-swatch c-insec"></div>Inseticida intenso</div>
+      <div class="cal-legend-item"><div class="cal-swatch c-insec-l"></div>Inseticida leve / monitoramento</div>
+      <div class="cal-legend-item"><div class="cal-swatch c-plant"></div>Plantio / desenvolvimento</div>
+      <div class="cal-legend-item"><div class="cal-swatch c-harvest"></div>Colheita</div>
+    </div>
+    <div class="cal-wrap" id="soja-cal-table"></div>
+    <div class="source-note">Fonte: Embrapa Soja, Reunião de Pesquisa de Soja 2024, CONAB. Janelas válidas para cultivares de ciclo médio (110–120 dias).</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     MILHO
+═══════════════════════════════════════════════ -->
+<div id="milho" class="section">
+  <div class="sect-header">
+    <div class="sect-num">02</div>
+    <div class="sect-title-block">
+      <h2>Milho</h2>
+      <p>22,1 milhões de hectares · 1ª safra (Set–Mar) e 2ª safra / safrinha (Jan–Jun) · MT, GO, MS, PR, RS</p>
+    </div>
+  </div>
+
+  <div class="tab-strip">
+    <button class="tab-btn active" onclick="showTab('milho','herb')">Herbicidas</button>
+    <button class="tab-btn" onclick="showTab('milho','fung')">Fungicidas</button>
+    <button class="tab-btn" onclick="showTab('milho','insec')">Inseticidas</button>
+    <button class="tab-btn" onclick="showTab('milho','cal')">Calendário</button>
+  </div>
+
+  <div id="milho-herb" class="tab-content active">
+    <div class="alert">
+      <strong>Janela estreita de seletividade no milho</strong>
+      Aplicações de pós-emergência fora da janela V2–V6 causam fitotoxidez severa. Atrazina é a base de todos os programas brasileiros — porém com restrições ambientais crescentes (lixiviação em solos arenosos e contaminação de aquíferos são debatidas no CONAMA).
+    </div>
+    <div class="subsect">Pré-emergência</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>IA</th><th>Dose</th><th>Alvo</th><th>Mecanismo</th><th>Restrições</th></tr></thead>
+        <tbody>
+          <tr><td>Atrazina</td><td>1,5–3,0 kg/ha</td><td>Amplo espectro (gramíneas + dicot.)</td><td><span class="tag tag-w">HRAC 5 — inibidor PSII</span></td><td>Solo argiloso: dose maior; arenoso: risco lixiviação; carência 60 dias pré-rotação soja</td></tr>
+          <tr><td>Simazina</td><td>1,5–2,5 kg/ha</td><td>Complementar à atrazina</td><td><span class="tag tag-w">HRAC 5</span></td><td>Residual longo; cuidado em rotação com culturas de ciclo curto</td></tr>
+          <tr><td>Acetocloro</td><td>1,5–2,5 L/ha</td><td>Gramíneas anuais</td><td><span class="tag tag-a">HRAC 15 — inibidor VLCFA</span></td><td>Melhor associado à atrazina; residual 45–60 dias</td></tr>
+          <tr><td>S-metolacloro</td><td>1,2–2,0 L/ha</td><td>Gramíneas + algumas dicot.</td><td><span class="tag tag-a">HRAC 15</span></td><td>Excelente para capim-colchão e capim-marmelada nos cerrados</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="subsect" style="margin-top:1.5rem">Pós-emergência (V2–V6)</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>IA</th><th>Dose</th><th>Alvo</th><th>Mecanismo</th><th>Ponto de atenção</th></tr></thead>
+        <tbody>
+          <tr><td>Nicosulfuron</td><td>30–60 g/ha</td><td>Gramíneas + tiririca parcial</td><td><span class="tag tag-b">HRAC 2 — inibidor ALS</span></td><td>NÃO misturar com organofosforados (fitotoxidez grave); intervalo mínimo 7 dias pós-OP</td></tr>
+          <tr><td>Mesotrione</td><td>100–144 g/ha</td><td>Folhas largas (trapoeraba, picão)</td><td><span class="tag tag-a">HRAC 27 — inibidor HPPD</span></td><td>Seletivo até V6; causa branqueamento transitório (inofensivo)</td></tr>
+          <tr><td>Tembotrione</td><td>75–100 g/ha</td><td>Folhas largas + algumas gramíneas</td><td><span class="tag tag-a">HRAC 27</span></td><td>Excelente na 2ª safra; associar com atrazina para ampliar espectro</td></tr>
+          <tr><td>Topramezone</td><td>25–33 g/ha</td><td>Gramíneas difíceis (braquiária)</td><td><span class="tag tag-a">HRAC 27</span></td><td>Melhor resultado com adjuvante MSO; seletivo até V5</td></tr>
+          <tr><td>Foramsulfuron + iodossulfuron</td><td>2,5–3,0 L/ha</td><td>Amplo espectro</td><td><span class="tag tag-b">HRAC 2</span></td><td>Excelente cobertura; custo mais elevado; cuidado com ALS-resistência</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="success">
+      <strong>Estratégia para braquiária no milho 2ª safra (MT/GO)</strong>
+      Braquiária como planta invasora é o maior problema de plantas daninhas na safrinha. Programa recomendado: atrazina na pré-emergência → tembotrione + atrazina em V3 → se necessário, topramezone em V5. Após V6 há perda de seletividade e o custo de controle raramente se justifica.
+    </div>
+  </div>
+
+  <div id="milho-fung" class="tab-content">
+    <div class="info">
+      <strong>Por que a 2ª safra exige mais fungicidas que a 1ª</strong>
+      A safrinha plantada em jan–fev e colhida em jun–jul em MT/GO passa pelo período maio–julho com temperaturas de 15–22°C e umidade relativa elevada — condições ideais para mancha-branca, ferrugem polissora e cercospora. O programa de fungicidas na safrinha tornou-se obrigatório a partir de 2015, quando biótipos mais agressivos de ferrugem polissora foram identificados.
+    </div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Doença</th><th>Agente</th><th>IAs de escolha</th><th>FRAC</th><th>Nº aplic. safrinha</th></tr></thead>
+        <tbody>
+          <tr><td>Mancha-branca (Phaeosphaeria)</td><td><em>Phaeosphaeria maydis</em></td><td>Piraclostrobina + metconazol; trifloxistrobina + tebuconazol</td><td><span class="tag tag-b">11+3</span></td><td>2–3</td></tr>
+          <tr><td>Ferrugem comum</td><td><em>Puccinia sorghi</em></td><td>Azoxistrobina + propiconazol; piraclostrobina + epoxiconazol</td><td><span class="tag tag-b">11+3</span></td><td>1–2</td></tr>
+          <tr><td>Ferrugem polissora</td><td><em>Puccinia polysora</em></td><td>Fluxapiroxade + piraclostrobina; mefentrifluconazol</td><td><span class="tag tag-p">7+11 / 3</span></td><td>2–3 (mais agressiva)</td></tr>
+          <tr><td>Cercospora</td><td><em>Cercospora zeae-maydis</em></td><td>Triazol + estrobilurina; boscalida + trifloxistrobina</td><td><span class="tag tag-b">3+11</span></td><td>1–2</td></tr>
+          <tr><td>Enfezamento vermelho/pálido</td><td>Fitoplasma / Spiroplasma<br><em>via cigarrinha Dalbulus</em></td><td>Controle do vetor — não há fungicida efetivo</td><td>—</td><td>Controle indireto (inseticida)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="subsect" style="margin-top:1.5rem">Programa padrão — safrinha MT/GO</div>
+    <div class="rot-box">
+      <div class="rot-step">
+        <div class="rot-num">1</div>
+        <div><strong>VT (pendoamento):</strong><p>Estrobilurina + triazol. Preventivo — antes do surgimento de sintomas. Primeira janela de intervenção.</p></div>
+      </div>
+      <div class="rot-step">
+        <div class="rot-num">2</div>
+        <div><strong>R1–R2:</strong><p>SDHI + estrobilurina + triazol (tripla mistura). Janela de maior retorno econômico. Retorno médio: 8–15 sacas/ha em anos de alta pressão.</p></div>
+      </div>
+      <div class="rot-step">
+        <div class="rot-num">3</div>
+        <div><strong>R3–R4:</strong><p>Triazol ou SDHI isolado, se pressão alta de ferrugem polissora. Intervalo 12–15 dias da 2ª aplicação.</p></div>
+      </div>
+    </div>
+    <div class="warn">
+      <strong>Ferrugem polissora — biótipos mais agressivos desde 2018</strong>
+      Em anos de alta incidência e sem controle, a ferrugem polissora pode causar 30–50% de perda na produção da safrinha. Monitorar a evolução semanalmente a partir de VT é fundamental para definir o momento exato da 1ª aplicação.
+    </div>
+  </div>
+
+  <div id="milho-insec" class="tab-content">
+    <div class="alert">
+      <strong>Lagarta-do-cartucho (Spodoptera frugiperda) — principal praga do milho no mundo</strong>
+      Estimativa de perdas sem controle: 15–40% da produção. Resistência a múltiplos inseticidas documentada em populações brasileiras. A rotação de mecanismos de ação entre safras consecutivas é obrigatória para preservar a eficiência dos produtos disponíveis.
+    </div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Praga</th><th>Estádio de ataque</th><th>Nível de dano</th><th>IAs recomendados</th><th>IRAC</th></tr></thead>
+        <tbody>
+          <tr><td>Lagarta-do-cartucho<br><em>Spodoptera frugiperda</em></td><td>V1–VT (cartucho)</td><td>20% plantas com cartucho destruído</td><td>Clorantraniliprole, espinosade, lufenuron, indoxacarbe, Bt (evitar piretroides isolados)</td><td><span class="tag tag-r">28 / 5 / 15 / 22</span></td></tr>
+          <tr><td>Lagarta-da-espiga<br><em>Helicoverpa zea</em></td><td>R1–R3 (estigmas)</td><td>1 lagarta/espiga em R1</td><td>Clorantraniliprole, espinosade, Bt aizawai</td><td><span class="tag tag-r">28 / 5 / 11</span></td></tr>
+          <tr><td>Broca-do-colmo<br><em>Diatraea saccharalis</em></td><td>V4–R2</td><td>5–10% colmos com galerias</td><td>Trichogramma galloi (biológico), clorantraniliprole, clorpirifós</td><td><span class="tag tag-t">Bio</span> / <span class="tag tag-r">28</span></td></tr>
+          <tr><td>Cigarrinha-do-milho<br><em>Dalbulus maidis</em></td><td>V1–V5 (vetor enfezamento)</td><td>Presença — controlar sempre V1–V3</td><td>Tiametoxam (semente + foliar), imidacloprido, lambda</td><td><span class="tag tag-w">4A / 4A+3</span></td></tr>
+          <tr><td>Percevejo-barriga-verde<br><em>Dichelops melacanthus</em></td><td>V1–V4 (base do colmo)</td><td>5% plantas com sintoma</td><td>Clorpirifós, tiametoxam + lambda, acefato</td><td><span class="tag tag-w">1B / 4A+3</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="success">
+      <strong>Milho Bt (VT PRO / PowerCore / Herculex)</strong>
+      Tecnologia que expressa proteínas Cry1A, Cry1F e Vip3A no tecido da planta. Reduz 60–80% das aplicações foliares para lagartas. Porém, populações de Spodoptera com resistência ao Cry1F já documentadas em MT — necessário refúgio obrigatório (20% da área com milho convencional) e complementação com inseticida em populações resistentes.
+    </div>
+  </div>
+
+  <div id="milho-cal" class="tab-content">
+    <div class="info">
+      <strong>Calendário para 1ª safra (Set–Mar, Sul/SE) e 2ª safra / safrinha (Jan–Jun, MT/GO/MS)</strong>
+      As duas safras têm programas fitossanitários distintos em timing e intensidade. A safrinha requer programa de fungicidas mais robusto devido ao clima mais frio e úmido durante a fase reprodutiva.
+    </div>
+    <div class="cal-legend">
+      <div class="cal-legend-item"><div class="cal-swatch c-herb"></div>Herbicida intenso</div>
+      <div class="cal-legend-item"><div class="cal-swatch c-herb-l"></div>Herbicida leve</div>
+      <div class="cal-legend-item"><div class="cal-swatch c-fung"></div>Fungicida intenso</div>
+      <div class="cal-legend-item"><div class="cal-swatch c-fung-l"></div>Fungicida leve</div>
+      <div class="cal-legend-item"><div class="cal-swatch c-insec"></div>Inseticida intenso</div>
+      <div class="cal-legend-item"><div class="cal-swatch c-insec-l"></div>Inseticida leve</div>
+      <div class="cal-legend-item"><div class="cal-swatch c-plant"></div>Plantio</div>
+      <div class="cal-legend-item"><div class="cal-swatch c-harvest"></div>Colheita</div>
+    </div>
+    <div class="cal-wrap" id="milho-cal-table"></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     CANA-DE-AÇÚCAR
+═══════════════════════════════════════════════ -->
+<div id="cana" class="section">
+  <div class="sect-header">
+    <div class="sect-num">03</div>
+    <div class="sect-title-block">
+      <h2>Cana-de-Açúcar</h2>
+      <p>9,1 milhões de hectares · ciclo perene (5–7 cortes) · SP, GO, MG, MS — maior produtor mundial · Módulo expandido com posicionamento por produto comercial</p>
+    </div>
+  </div>
+
+  <div class="tab-strip">
+    <button class="tab-btn active" onclick="showTab('cana','herb')">Herbicidas — Fichas</button>
+    <button class="tab-btn" onclick="showTab('cana','insec')">Inseticidas — Fichas</button>
+    <button class="tab-btn" onclick="showTab('cana','heatmap')">Heatmap de Uso</button>
+    <button class="tab-btn" onclick="showTab('cana','calexec')">Calendário Executivo</button>
+    <button class="tab-btn" onclick="showTab('cana','fung')">Fungicidas / Maturadores</button>
+    <button class="tab-btn" onclick="showTab('cana','nutr')">Nutrição integrada</button>
+  </div>
+
+
+
+
+<!-- ═══ CANA: HERBICIDAS FICHAS ═══ -->
+  <div id="cana-herb" class="tab-content active">
+    <div class="alert"><strong>Período crítico de controle: 0–90 dias pós-corte / pós-plantio</strong> Infestação precoce reduz TCH em 20–45%. A cana tem crescimento inicial lento e tolera mal a competição nas primeiras 12 semanas.</div>
+
+    <style>
+    .ficha{background:var(--surface);border:1px solid var(--border2);border-radius:var(--r3);margin-bottom:1rem;overflow:hidden}
+    .ficha-head{display:flex;align-items:center;justify-content:space-between;padding:.875rem 1.25rem;background:rgba(168,200,32,0.06);border-bottom:1px solid var(--border2);cursor:pointer;gap:1rem;flex-wrap:wrap}
+    .ficha-head h4{font-size:13px;font-weight:600;color:#e8f0f5;margin:0;display:flex;align-items:center;gap:8px}
+    .ficha-head h4::before{content:'';width:3px;height:16px;background:var(--lime);border-radius:2px;flex-shrink:0}
+    .ficha-head .empresa{font-size:11px;color:var(--muted)}
+    .ficha-head .imp{font-size:10px;font-weight:700;padding:3px 10px;border-radius:10px;white-space:nowrap}
+    .imp-ma{background:rgba(168,200,32,0.2);color:#c8e040;border:1px solid rgba(168,200,32,0.35)}
+    .imp-a{background:rgba(29,158,117,0.2);color:#6de0b8;border:1px solid rgba(29,158,117,0.35)}
+    .imp-m{background:rgba(186,117,23,0.2);color:#f5c97a;border:1px solid rgba(186,117,23,0.35)}
+    .imp-b{background:rgba(255,255,255,0.08);color:rgba(232,240,245,0.6);border:1px solid rgba(255,255,255,0.12)}
+    .ficha-body{padding:1.125rem 1.25rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem}
+    .ficha-field{font-size:11.5px}
+    .ficha-field .fl{font-size:9.5px;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);font-weight:600;margin-bottom:3px}
+    .ficha-field .fv{color:rgba(232,240,245,0.85);line-height:1.55}
+    .ficha-full{grid-column:1/-1}
+    .solo-dots{display:flex;gap:6px;flex-wrap:wrap;margin-top:3px}
+    .sdot{font-size:10px;padding:2px 7px;border-radius:8px;font-weight:500}
+    .sdot-ok{background:rgba(29,158,117,0.2);color:#6de0b8;border:1px solid rgba(29,158,117,0.3)}
+    .sdot-warn{background:rgba(186,117,23,0.2);color:#f5c97a;border:1px solid rgba(186,117,23,0.3)}
+    .sdot-no{background:rgba(216,90,48,0.15);color:#f5a07a;border:1px solid rgba(216,90,48,0.25)}
+    .janela-bar{display:flex;gap:3px;margin-top:4px}
+    .jm{width:20px;height:14px;border-radius:2px;font-size:8px;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600}
+    .jm-on{background:var(--lime);color:#0b1e2d}
+    .jm-mid{background:rgba(168,200,32,0.4);color:#e8f0f5}
+    .jm-off{background:rgba(255,255,255,0.06)}
+    </style>
+
+    <!-- ALION PRO -->
+    <div class="ficha">
+      <div class="ficha-head">
+        <h4>Alion® PRO <span style="font-weight:300;color:var(--muted)">— Indaziflam + Metribuzin</span></h4>
+        <div style="display:flex;align-items:center;gap:8px"><span class="empresa">Bayer</span><span class="imp imp-ma">Muito Alto</span></div>
+      </div>
+      <div class="ficha-body">
+        <div class="ficha-field"><div class="fl">Posicionamento</div><div class="fv"><span class="tag tag-g">Pré-emergência</span> <span class="tag tag-w">Área total</span> — Cana-planta e soca</div></div>
+        <div class="ficha-field"><div class="fl">Janela (DAC / DAP)</div><div class="fv"><strong>0–30 DAC/DAP</strong> — imediatamente após o corte ou plantio, antes da emergência das daninhas<div class="janela-bar"><span class="jm jm-off">J</span><span class="jm jm-off">F</span><span class="jm jm-off">M</span><span class="jm jm-mid">A</span><span class="jm jm-on">M</span><span class="jm jm-on">J</span><span class="jm jm-on">J</span><span class="jm jm-on">A</span><span class="jm jm-mid">S</span><span class="jm jm-mid">O</span><span class="jm jm-off">N</span><span class="jm jm-off">D</span></div></div></div>
+        <div class="ficha-field"><div class="fl">Alvo principal</div><div class="fv">Braquiária (<em>Urochloa decumbens / brizantha</em>), capim-colonião, corda-de-viola, leiteiro, picão-preto — espectro amplo</div></div>
+        <div class="ficha-field"><div class="fl">Dose</div><div class="fv">600–1.000 g/ha (cana-planta) · 400–800 g/ha (soca)</div></div>
+        <div class="ficha-field"><div class="fl">Mecanismo de ação</div><div class="fv"><span class="tag tag-b">HRAC 29</span> Indaziflam (inib. biosínt. celulose) + <span class="tag tag-w">HRAC 5</span> Metribuzin (inib. PSII)</div></div>
+        <div class="ficha-field"><div class="fl">Condições de solo</div><div class="solo-dots"><span class="sdot sdot-ok">Argiloso ✓</span><span class="sdot sdot-ok">Médio ✓</span><span class="sdot sdot-warn">Arenoso ⚠ (reduzir dose)</span></div></div>
+        <div class="ficha-field ficha-full"><div class="fl">Motivo agronômico</div><div class="fv">Combinação única de residual longo (90–120 dias do indaziflam) com ação imediata do metribuzin. Protege a fase mais crítica de crescimento da soca (0–60 DAC). Sem controle nessa janela, braquiária compete intensamente por água e luz, reduzindo TCH em 15–35% e ATR em 3–8 kg/t. Uso predominante nas regiões de Ribeirão Preto, Piracicaba e Triângulo Mineiro.</div></div>
+        <div class="ficha-field ficha-full"><div class="fl">Risco de não aplicar</div><div class="fv" style="color:rgba(245,160,122,0.9)">Perda de 15–35 t/ha de TCH em áreas com histórico de braquiária. ATR reduzido em 3–8 kg/t. Soca comprometida pode não justificar mais um corte.</div></div>
+        <div class="ficha-field"><div class="fl">Regiões de maior adoção</div><div class="fv">Ribeirão Preto (SP), Piracicaba (SP), Triângulo Mineiro (MG), Sul de Goiás</div></div>
+        <div class="ficha-field"><div class="fl">Integração</div><div class="fv">Complementar com Roundup® dirigido aos 60–90 DAC para escapes. Em palha densa (&gt;10 t/ha), associar com Provence® Total.</div></div>
+      </div>
+    </div>
+
+    <!-- ALION -->
+    <div class="ficha">
+      <div class="ficha-head">
+        <h4>Alion® <span style="font-weight:300;color:var(--muted)">— Indaziflam</span></h4>
+        <div style="display:flex;align-items:center;gap:8px"><span class="empresa">Bayer</span><span class="imp imp-a">Alto</span></div>
+      </div>
+      <div class="ficha-body">
+        <div class="ficha-field"><div class="fl">Posicionamento</div><div class="fv"><span class="tag tag-g">Pré-emergência</span> <span class="tag tag-w">Área total</span></div></div>
+        <div class="ficha-field"><div class="fl">Janela (DAC / DAP)</div><div class="fv"><strong>0–20 DAC/DAP</strong><div class="janela-bar"><span class="jm jm-off">J</span><span class="jm jm-off">F</span><span class="jm jm-off">M</span><span class="jm jm-mid">A</span><span class="jm jm-on">M</span><span class="jm jm-on">J</span><span class="jm jm-on">J</span><span class="jm jm-on">A</span><span class="jm jm-mid">S</span><span class="jm jm-off">O</span><span class="jm jm-off">N</span><span class="jm jm-off">D</span></div></div></div>
+        <div class="ficha-field"><div class="fl">Alvo principal</div><div class="fv">Braquiária, capim-colonião, gramíneas anuais de difícil controle</div></div>
+        <div class="ficha-field"><div class="fl">Dose</div><div class="fv">200–250 mL/ha</div></div>
+        <div class="ficha-field"><div class="fl">Mecanismo de ação</div><div class="fv"><span class="tag tag-b">HRAC 29</span> Inibidor da biossíntese de celulose — impede germinação e emergência</div></div>
+        <div class="ficha-field"><div class="fl">Condições de solo</div><div class="solo-dots"><span class="sdot sdot-ok">Argiloso ✓</span><span class="sdot sdot-ok">Médio ✓</span><span class="sdot sdot-warn">Arenoso ⚠</span></div></div>
+        <div class="ficha-field ficha-full"><div class="fl">Motivo agronômico</div><div class="fv">Produto de residual ultra-longo (até 150 dias). Ideal para cana-planta em solos de textura média-argilosa onde o programa padrão (diurón+hexazinona) é insuficiente. Exige umidade mínima para ativar — não aplicar em solos secos sem previsão de chuva.</div></div>
+        <div class="ficha-field"><div class="fl">Regiões de maior adoção</div><div class="fv">São José do Rio Preto (SP), Sul de Goiás, MS</div></div>
+        <div class="ficha-field"><div class="fl">Integração</div><div class="fv">Frequentemente misturado com Sencor® para ampliar espectro em folhas largas.</div></div>
+      </div>
+    </div>
+
+    <!-- PROVENCE TOTAL -->
+    <div class="ficha">
+      <div class="ficha-head">
+        <h4>Provence® Total <span style="font-weight:300;color:var(--muted)">— Isoxaflutole + Indaziflam</span></h4>
+        <div style="display:flex;align-items:center;gap:8px"><span class="empresa">Bayer</span><span class="imp imp-a">Alto</span></div>
+      </div>
+      <div class="ficha-body">
+        <div class="ficha-field"><div class="fl">Posicionamento</div><div class="fv"><span class="tag tag-g">Pré-emergência</span> — especialmente em áreas de palha densa (≥ 8 t/ha)</div></div>
+        <div class="ficha-field"><div class="fl">Janela (DAC / DAP)</div><div class="fv"><strong>0–30 DAC/DAP</strong> — em cana crua sobre palhiço<div class="janela-bar"><span class="jm jm-off">J</span><span class="jm jm-off">F</span><span class="jm jm-off">M</span><span class="jm jm-mid">A</span><span class="jm jm-on">M</span><span class="jm jm-on">J</span><span class="jm jm-on">J</span><span class="jm jm-on">A</span><span class="jm jm-mid">S</span><span class="jm jm-off">O</span><span class="jm jm-off">N</span><span class="jm jm-off">D</span></div></div></div>
+        <div class="ficha-field"><div class="fl">Alvo principal</div><div class="fv">Braquiária, capim-colonião em áreas de cana crua com palha espessa — condição que dificulta produtos convencionais</div></div>
+        <div class="ficha-field"><div class="fl">Dose</div><div class="fv">700–900 g/ha (isoxaflutole + indaziflam)</div></div>
+        <div class="ficha-field"><div class="fl">Mecanismo de ação</div><div class="fv"><span class="tag tag-a">HRAC 27</span> Isoxaflutole (inib. HPPD) + <span class="tag tag-b">HRAC 29</span> Indaziflam</div></div>
+        <div class="ficha-field"><div class="fl">Condições de solo</div><div class="solo-dots"><span class="sdot sdot-ok">Argiloso ✓✓</span><span class="sdot sdot-ok">Médio ✓</span><span class="sdot sdot-no">Arenoso ✗ (risco lixiviação)</span></div></div>
+        <div class="ficha-field ficha-full"><div class="fl">Motivo agronômico</div><div class="fv">O isoxaflutole atravessa a palha com a água da chuva e atua no solo. Essencial em programas de cana crua onde a palha reduz a eficiência de herbicidas tradicionais. O branqueamento transitório (efeito HPPD) não é sinal de fitotoxidez à cana. Protege contra gramíneas que emergem lateralmente pela palha.</div></div>
+        <div class="ficha-field"><div class="fl">Regiões de maior adoção</div><div class="fv">Ribeirão Preto (SP), Piracicaba (SP) — regiões com &gt;100% cana crua</div></div>
+      </div>
+    </div>
+
+    <!-- VELPAR / COMBINE -->
+    <div class="ficha">
+      <div class="ficha-head">
+        <h4>Velpar® / Combine® <span style="font-weight:300;color:var(--muted)">— Hexazinona + Diurón</span></h4>
+        <div style="display:flex;align-items:center;gap:8px"><span class="empresa">Corteva / UPL</span><span class="imp imp-ma">Muito Alto</span></div>
+      </div>
+      <div class="ficha-body">
+        <div class="ficha-field"><div class="fl">Posicionamento</div><div class="fv"><span class="tag tag-g">Pré-emergência</span> <span class="tag tag-w">Soca (pós-colheita imediata)</span> — padrão histórico do Brasil</div></div>
+        <div class="ficha-field"><div class="fl">Janela (DAC)</div><div class="fv"><strong>0–15 DAC</strong> — máxima eficiência antes de qualquer brotação de daninha<div class="janela-bar"><span class="jm jm-mid">J</span><span class="jm jm-mid">F</span><span class="jm jm-mid">M</span><span class="jm jm-on">A</span><span class="jm jm-on">M</span><span class="jm jm-on">J</span><span class="jm jm-on">J</span><span class="jm jm-on">A</span><span class="jm jm-on">S</span><span class="jm jm-mid">O</span><span class="jm jm-mid">N</span><span class="jm jm-mid">D</span></div></div></div>
+        <div class="ficha-field"><div class="fl">Alvo principal</div><div class="fv">Braquiária, capim-colchão, capim-marmelada, folhas largas anuais, leiteiro</div></div>
+        <div class="ficha-field"><div class="fl">Dose</div><div class="fv">Velpar K WG: 3,0–4,0 kg/ha · Combine 750 WG: 2,5–3,5 kg/ha</div></div>
+        <div class="ficha-field"><div class="fl">Mecanismo de ação</div><div class="fv"><span class="tag tag-w">HRAC 5</span> Diurón (inib. PSII) + <span class="tag tag-w">HRAC 5</span> Hexazinona (sistêmico, translocado)</div></div>
+        <div class="ficha-field"><div class="fl">Condições de solo</div><div class="solo-dots"><span class="sdot sdot-ok">Argiloso ✓✓</span><span class="sdot sdot-ok">Médio ✓</span><span class="sdot sdot-no">Arenoso ✗ (hexazinona lixivia, risco fitotox.)</span></div></div>
+        <div class="ficha-field ficha-full"><div class="fl">Motivo agronômico</div><div class="fv">Combinação mais usada em cana-soca no Brasil por décadas. Diurón atua como barreira residual no solo; hexazinona é sistêmica e controla gramíneas que já iniciaram germinação. Custo-benefício excelente em solos argilosos. Em solos arenosos (&lt;15% argila) a hexazinona pode causar fitotoxidez na cana — preferir Alion® PRO.</div></div>
+        <div class="ficha-field"><div class="fl">Risco de não aplicar</div><div class="fv" style="color:rgba(245,160,122,0.9)">Infestação de braquiária nos primeiros 30 DAC compromete rebrota da soca. Redução de 20–40 t/ha TCH em áreas de alta pressão.</div></div>
+        <div class="ficha-field"><div class="fl">Regiões de maior adoção</div><div class="fv">SP (todas as regiões), MG, GO, MS — uso universal na soca</div></div>
+      </div>
+    </div>
+
+    <!-- BORAL -->
+    <div class="ficha">
+      <div class="ficha-head">
+        <h4>Boral® <span style="font-weight:300;color:var(--muted)">— Sulfentrazona</span></h4>
+        <div style="display:flex;align-items:center;gap:8px"><span class="empresa">FMC</span><span class="imp imp-a">Alto</span></div>
+      </div>
+      <div class="ficha-body">
+        <div class="ficha-field"><div class="fl">Posicionamento</div><div class="fv"><span class="tag tag-g">Pré-emergência</span> — especializado em tiririca e espécies difíceis</div></div>
+        <div class="ficha-field"><div class="fl">Janela (DAC / DAP)</div><div class="fv"><strong>0–30 DAC/DAP</strong><div class="janela-bar"><span class="jm jm-off">J</span><span class="jm jm-off">F</span><span class="jm jm-off">M</span><span class="jm jm-mid">A</span><span class="jm jm-on">M</span><span class="jm jm-on">J</span><span class="jm jm-on">J</span><span class="jm jm-on">A</span><span class="jm jm-on">S</span><span class="jm jm-mid">O</span><span class="jm jm-off">N</span><span class="jm jm-off">D</span></div></div></div>
+        <div class="ficha-field"><div class="fl">Alvo principal</div><div class="fv">Tiririca (<em>Cyperus rotundus</em>) — alvo primário; leiteiro, corda-de-viola, merremia</div></div>
+        <div class="ficha-field"><div class="fl">Dose</div><div class="fv">600–1.200 mL/ha</div></div>
+        <div class="ficha-field"><div class="fl">Mecanismo de ação</div><div class="fv"><span class="tag tag-p">HRAC 14</span> Inibidor da PPO — interrompe síntese de clorofila</div></div>
+        <div class="ficha-field"><div class="fl">Condições de solo</div><div class="solo-dots"><span class="sdot sdot-ok">Argiloso ✓</span><span class="sdot sdot-ok">Médio ✓</span><span class="sdot sdot-warn">Arenoso ⚠ (reduzir dose)</span></div></div>
+        <div class="ficha-field ficha-full"><div class="fl">Motivo agronômico</div><div class="fv">Única opção de alta eficiência para tiririca em cana. Residual de 90–120 dias. Essencial em áreas com histórico de tiririca, que sem controle reduz TCH em 15–30% e complica a mecanização de colheita. Pode ser misturado com Velpar® na soca ou com Alion® PRO na planta para ampliar espectro.</div></div>
+        <div class="ficha-field"><div class="fl">Regiões de maior adoção</div><div class="fv">SP (todas), Triângulo Mineiro (MG) — onde tiririca é problema endêmico</div></div>
+        <div class="ficha-field"><div class="fl">Integração</div><div class="fv">Mix com Velpar® (soca): cobertura de gramíneas + tiririca + folhas largas em uma só passagem.</div></div>
+      </div>
+    </div>
+
+    <!-- GAMIT -->
+    <div class="ficha">
+      <div class="ficha-head">
+        <h4>Gamit® <span style="font-weight:300;color:var(--muted)">— Clomazona</span></h4>
+        <div style="display:flex;align-items:center;gap:8px"><span class="empresa">FMC</span><span class="imp imp-a">Alto</span></div>
+      </div>
+      <div class="ficha-body">
+        <div class="ficha-field"><div class="fl">Posicionamento</div><div class="fv"><span class="tag tag-g">Pré-emergência</span> — usado em mistura na cana-planta</div></div>
+        <div class="ficha-field"><div class="fl">Janela (DAP)</div><div class="fv"><strong>0–20 DAP</strong> (cana-planta) · <strong>0–15 DAC</strong> (soca em mistura)<div class="janela-bar"><span class="jm jm-off">J</span><span class="jm jm-off">F</span><span class="jm jm-off">M</span><span class="jm jm-off">M</span><span class="jm jm-mid">M</span><span class="jm jm-on">J</span><span class="jm jm-on">J</span><span class="jm jm-on">A</span><span class="jm jm-mid">S</span><span class="jm jm-mid">O</span><span class="jm jm-mid">N</span><span class="jm jm-off">D</span></div></div></div>
+        <div class="ficha-field"><div class="fl">Alvo principal</div><div class="fv">Gramíneas anuais (capim-colchão, marmelada, braquiária jovem), algumas dicotiledôneas</div></div>
+        <div class="ficha-field"><div class="fl">Dose</div><div class="fv">1,0–1,5 L/ha (isolado) · 0,5–0,8 L/ha (mistura)</div></div>
+        <div class="ficha-field"><div class="fl">Mecanismo de ação</div><div class="fv"><span class="tag tag-a">HRAC 13</span> Inibidor da biossíntese de carotenóides — branqueamento de folhas jovens</div></div>
+        <div class="ficha-field"><div class="fl">Condições de solo</div><div class="solo-dots"><span class="sdot sdot-ok">Argiloso ✓</span><span class="sdot sdot-ok">Médio ✓</span><span class="sdot sdot-warn">Arenoso ⚠ (risco deriva — usar GSS)</span></div></div>
+        <div class="ficha-field ficha-full"><div class="fl">Motivo agronômico</div><div class="fv">Complemento padrão em misturas de cana-planta (+ ametrina, + metribuzin). Custo baixo e eficiência comprovada em gramíneas anuais. Atenção ao risco de deriva por volatilização em dias quentes — aplicar antes das 9h ou após as 17h. Não usar em solos arenosos sem incorporação ou chuva prevista.</div></div>
+        <div class="ficha-field"><div class="fl">Integração</div><div class="fv">Mistura clássica: Gamit® + Velpar® + Boral® na soca para cobertura total de gramíneas + folhas largas + tiririca.</div></div>
+      </div>
+    </div>
+
+    <!-- SENCOR -->
+    <div class="ficha">
+      <div class="ficha-head">
+        <h4>Sencor® <span style="font-weight:300;color:var(--muted)">— Metribuzin</span></h4>
+        <div style="display:flex;align-items:center;gap:8px"><span class="empresa">Bayer</span><span class="imp imp-m">Médio</span></div>
+      </div>
+      <div class="ficha-body">
+        <div class="ficha-field"><div class="fl">Posicionamento</div><div class="fv"><span class="tag tag-g">Pré-emergência</span> <span class="tag tag-r">Pós-emergência precoce</span> — complemento em misturas</div></div>
+        <div class="ficha-field"><div class="fl">Janela</div><div class="fv"><strong>0–30 DAC/DAP</strong> (pré) ou até BBCH 12 das daninhas (pós precoce)</div></div>
+        <div class="ficha-field"><div class="fl">Alvo principal</div><div class="fv">Folhas largas anuais, algumas gramíneas, carrapicho, amendoim-bravo</div></div>
+        <div class="ficha-field"><div class="fl">Dose</div><div class="fv">480–960 g/ha</div></div>
+        <div class="ficha-field"><div class="fl">Mecanismo de ação</div><div class="fv"><span class="tag tag-w">HRAC 5</span> Inibidor PSII</div></div>
+        <div class="ficha-field"><div class="fl">Condições de solo</div><div class="solo-dots"><span class="sdot sdot-ok">Argiloso ✓</span><span class="sdot sdot-warn">Médio ⚠ (dose inferior)</span><span class="sdot sdot-no">Arenoso ✗</span></div></div>
+        <div class="ficha-field ficha-full"><div class="fl">Motivo agronômico</div><div class="fv">Componente do Alion® PRO e amplamente misturado com indaziflam. Eficiência em folhas largas que escapam dos programas focados em gramíneas. Em solo arenoso, lixivia rapidamente e pode causar fitotoxidez na cana — usar com cautela ou substituir por Boral®.</div></div>
+      </div>
+    </div>
+
+    <!-- PLATEAU -->
+    <div class="ficha">
+      <div class="ficha-head">
+        <h4>Plateau® <span style="font-weight:300;color:var(--muted)">— Imazapic</span></h4>
+        <div style="display:flex;align-items:center;gap:8px"><span class="empresa">BASF</span><span class="imp imp-m">Médio</span></div>
+      </div>
+      <div class="ficha-body">
+        <div class="ficha-field"><div class="fl">Posicionamento</div><div class="fv"><span class="tag tag-g">Pré-emergência</span> <span class="tag tag-r">Pós-emergência</span> — especializado em Cyperus e Merremia</div></div>
+        <div class="ficha-field"><div class="fl">Janela</div><div class="fv"><strong>0–45 DAC/DAP</strong> — uso mais amplo que outros pré-emergentes</div></div>
+        <div class="ficha-field"><div class="fl">Alvo principal</div><div class="fv">Tiririca (<em>Cyperus rotundus</em>), merremia, corda-de-viola, capim-colonião jovem</div></div>
+        <div class="ficha-field"><div class="fl">Dose</div><div class="fv">140–210 g/ha</div></div>
+        <div class="ficha-field"><div class="fl">Mecanismo de ação</div><div class="fv"><span class="tag tag-b">HRAC 2</span> Inibidor ALS — inibe síntese de aminoácidos de cadeia ramificada</div></div>
+        <div class="ficha-field"><div class="fl">Condições de solo</div><div class="solo-dots"><span class="sdot sdot-ok">Argiloso ✓</span><span class="sdot sdot-ok">Médio ✓</span><span class="sdot sdot-warn">Arenoso ⚠</span></div></div>
+        <div class="ficha-field ficha-full"><div class="fl">Motivo agronômico</div><div class="fv">Opção valiosa para controle de tiririca em cana — atua via solo e parte aérea. Uso mais restrito pois requer cana com boa capacidade de tolerância (verificar variedade). Excelente em áreas de merremia (<em>Ipomoea</em>), espécie que compromete mecanização da colheita. Cuidado com carência em rotação com soja e milho.</div></div>
+        <div class="ficha-field"><div class="fl">Regiões de maior adoção</div><div class="fv">Uso pontual — Sul de Goiás (merremia) e Triângulo Mineiro (tiririca)</div></div>
+      </div>
+    </div>
+
+    <!-- ROUNDUP -->
+    <div class="ficha">
+      <div class="ficha-head">
+        <h4>Roundup® <span style="font-weight:300;color:var(--muted)">— Glifosato</span></h4>
+        <div style="display:flex;align-items:center;gap:8px"><span class="empresa">Bayer</span><span class="imp imp-ma">Muito Alto</span></div>
+      </div>
+      <div class="ficha-body">
+        <div class="ficha-field"><div class="fl">Posicionamento</div><div class="fv"><span class="tag tag-r">Pós-emergência dirigida</span> — entrelinhas; <span class="tag tag-w">Subdose maturador</span> (pré-colheita)</div></div>
+        <div class="ficha-field"><div class="fl">Janela</div><div class="fv">Pós-emergência: <strong>60–180 DAC</strong> (controle de escapes) · Maturador: <strong>40–50 dias antes colheita</strong><div class="janela-bar"><span class="jm jm-mid">J</span><span class="jm jm-mid">F</span><span class="jm jm-mid">M</span><span class="jm jm-mid">A</span><span class="jm jm-on">M</span><span class="jm jm-on">J</span><span class="jm jm-on">J</span><span class="jm jm-on">A</span><span class="jm jm-on">S</span><span class="jm jm-mid">O</span><span class="jm jm-mid">N</span><span class="jm jm-mid">D</span></div></div></div>
+        <div class="ficha-field"><div class="fl">Alvo principal</div><div class="fv">Braquiária estabelecida, capim-colonião adulto, todas as espécies daninhas (pós-emergência não-seletiva)</div></div>
+        <div class="ficha-field"><div class="fl">Dose</div><div class="fv">Controle: 1,5–3,0 L/ha (dirigido) · Maturador: 270–360 g e.a./ha (subdose)</div></div>
+        <div class="ficha-field"><div class="fl">Mecanismo de ação</div><div class="fv"><span class="tag tag-b">HRAC 9</span> Inibidor da EPSPS — inibe síntese de aminoácidos aromáticos</div></div>
+        <div class="ficha-field"><div class="fl">Condições de uso</div><div class="solo-dots"><span class="sdot sdot-ok">Qualquer solo ✓</span><span class="sdot sdot-warn">Dirigido — bico protetor obrigatório</span></div></div>
+        <div class="ficha-field ficha-full"><div class="fl">Motivo agronômico</div><div class="fv">Produto mais versátil da cana — usado tanto no manejo de plantas daninhas adultas (escapes) quanto como maturador em subdose. Como maturador, a subdose de glifosato inibe o crescimento vegetativo e força o acúmulo de sacarose nos internódios. ATENÇÃO: dose ligeiramente acima da recomendada pode matar ponteiros e comprometer a rebrota da soca — calibração precisa é essencial.</div></div>
+        <div class="ficha-field"><div class="fl">Risco de não aplicar (maturador)</div><div class="fv" style="color:rgba(245,160,122,0.9)">Sem maturação adequada, pol% pode ser 1–3 pontos abaixo do potencial — perda de ATR de 4–12 kg/t, impacto de R$ 80–240/ha por corte.</div></div>
+      </div>
+    </div>
+    <div class="source-note">Fontes: AGROFIT/MAPA, Embrapa CNPMA, CTC, Reunião Técnica Herbicidas em Cana (SBCPD 2024). Posicionamentos baseados em recomendações registradas e práticas operacionais das usinas do Centro-Sul.</div>
+  </div>
+
+<!-- ═══ CANA: INSETICIDAS FICHAS ═══ -->
+  <div id="cana-insec" class="tab-content">
+    <div class="success"><strong>Referência mundial em controle biológico integrado</strong> O programa de biológicos da cana paulista (Cotesia + Trichogramma + Metarhizium) está presente em &gt;6 milhões de hectares. Os inseticidas químicos abaixo atuam em situações específicas onde o biológico é insuficiente ou como complemento estratégico.</div>
+
+    <!-- CURBIX -->
+    <div class="ficha">
+      <div class="ficha-head">
+        <h4>Curbix® <span style="font-weight:300;color:var(--muted)">— Etiprole</span></h4>
+        <div style="display:flex;align-items:center;gap:8px"><span class="empresa">Bayer</span><span class="imp imp-ma">Muito Alto</span></div>
+      </div>
+      <div class="ficha-body">
+        <div class="ficha-field"><div class="fl">Posicionamento</div><div class="fv"><span class="tag tag-b">Aplicação em sulco</span> (plantio e soca) + <span class="tag tag-r">Foliar</span> (cigarrinha adulta)</div></div>
+        <div class="ficha-field"><div class="fl">Janela (DAC / DAP)</div><div class="fv"><strong>Sulco: no plantio ou 0–30 DAC</strong> · Foliar: <strong>30–120 DAC</strong> (pico cigarrinha)<div class="janela-bar"><span class="jm jm-mid">J</span><span class="jm jm-off">F</span><span class="jm jm-off">M</span><span class="jm jm-on">A</span><span class="jm jm-on">M</span><span class="jm jm-on">J</span><span class="jm jm-on">J</span><span class="jm jm-off">A</span><span class="jm jm-off">S</span><span class="jm jm-off">O</span><span class="jm jm-off">N</span><span class="jm jm-off">D</span></div></div></div>
+        <div class="ficha-field"><div class="fl">Alvo principal</div><div class="fv">Cigarrinha-das-raízes (<em>Mahanarva fimbriolata</em>) — ninfas e adultos; complementar para broca</div></div>
+        <div class="ficha-field"><div class="fl">Dose</div><div class="fv">Sulco: 0,4–0,6 L/ha · Foliar: 0,4–0,5 L/ha</div></div>
+        <div class="ficha-field"><div class="fl">Mecanismo de ação</div><div class="fv"><span class="tag tag-r">IRAC 2B</span> Fenilpirazol — bloqueador de canais de cloro (GABA)</div></div>
+        <div class="ficha-field ficha-full"><div class="fl">Motivo agronômico</div><div class="fv">Produto de referência para cigarrinha-das-raízes, praga que causa 5–15 t/ha de redução de TCH em infestações acima do nível de dano. Etiprole tem sistemia ascendente — aplicado no sulco, protege o sistema radicular onde as ninfas se desenvolvem. Em anos de alta pressão de cigarrinha (abril–julho), o controle químico complementa o biológico (Metarhizium). Amplamente adotado em SP e GO.</div></div>
+        <div class="ficha-field"><div class="fl">Risco de não controlar</div><div class="fv" style="color:rgba(245,160,122,0.9)">Infestação &gt;5 ninfas/touceira sem controle: perda de 8–15 t/ha TCH, redução de 0,5–1,5 pontos ATR.</div></div>
+        <div class="ficha-field"><div class="fl">Regiões de maior adoção</div><div class="fv">SP (todas), Sul de Goiás, MS — onde cigarrinha é endêmica</div></div>
+      </div>
+    </div>
+
+    <!-- REGENT -->
+    <div class="ficha">
+      <div class="ficha-head">
+        <h4>Regent® 800 WG <span style="font-weight:300;color:var(--muted)">— Fipronil</span></h4>
+        <div style="display:flex;align-items:center;gap:8px"><span class="empresa">BASF</span><span class="imp imp-ma">Muito Alto</span></div>
+      </div>
+      <div class="ficha-body">
+        <div class="ficha-field"><div class="fl">Posicionamento</div><div class="fv"><span class="tag tag-b">Aplicação em sulco</span> (plantio) — tratamento do solo no momento do plantio</div></div>
+        <div class="ficha-field"><div class="fl">Janela (DAP)</div><div class="fv"><strong>No plantio</strong> — aplicado diretamente no sulco antes de cobrir os toletes<div class="janela-bar"><span class="jm jm-off">J</span><span class="jm jm-off">F</span><span class="jm jm-off">M</span><span class="jm jm-off">A</span><span class="jm jm-off">M</span><span class="jm jm-off">J</span><span class="jm jm-off">J</span><span class="jm jm-off">A</span><span class="jm jm-on">S</span><span class="jm jm-on">O</span><span class="jm jm-on">N</span><span class="jm jm-mid">D</span></div></div></div>
+        <div class="ficha-field"><div class="fl">Alvo principal</div><div class="fv">Cupins (<em>Heterotermes tenuis, Nasutitermes</em>), <em>Sphenophorus levis</em> (bicudo-da-cana), <em>Migdolus fryanus</em>, broca-do-colmo inicial</div></div>
+        <div class="ficha-field"><div class="fl">Dose</div><div class="fv">0,10–0,20 kg/ha (sulco de plantio)</div></div>
+        <div class="ficha-field"><div class="fl">Mecanismo de ação</div><div class="fv"><span class="tag tag-r">IRAC 2B</span> Fenilpirazol — bloqueador de canais de cloro</div></div>
+        <div class="ficha-field ficha-full"><div class="fl">Motivo agronômico</div><div class="fv">Padrão ouro para proteção do tolete no plantio. Cupins e Sphenophorus atacam os toletes logo após o plantio, reduzindo a brotação em 20–60% em áreas infestadas. Fipronil no sulco protege por 60–90 dias — cobrindo o período crítico de estabelecimento. Em áreas com histórico de Migdolus, é obrigatório. Impacto direto na população de perfilhos e no stand final da cana-planta.</div></div>
+        <div class="ficha-field"><div class="fl">Risco de não aplicar</div><div class="fv" style="color:rgba(245,160,122,0.9)">Em áreas com histórico de cupins: falhas de brotação de 15–40%, exigindo replantio ou abandono da área. Custo do replantio: R$ 2.000–4.000/ha.</div></div>
+        <div class="ficha-field"><div class="fl">Regiões de maior adoção</div><div class="fv">São José do Rio Preto (SP), Triângulo Mineiro (MG) — maior incidência de Migdolus e cupins</div></div>
+      </div>
+    </div>
+
+    <!-- BELT -->
+    <div class="ficha">
+      <div class="ficha-head">
+        <h4>Belt® <span style="font-weight:300;color:var(--muted)">— Flubendiamida</span></h4>
+        <div style="display:flex;align-items:center;gap:8px"><span class="empresa">Bayer</span><span class="imp imp-a">Alto</span></div>
+      </div>
+      <div class="ficha-body">
+        <div class="ficha-field"><div class="fl">Posicionamento</div><div class="fv"><span class="tag tag-r">Foliar</span> — controle de lagartas desfolhadoras e broca em fase inicial</div></div>
+        <div class="ficha-field"><div class="fl">Janela (DAC / DAP)</div><div class="fv"><strong>60–240 DAC/DAP</strong> — fase vegetativa até fechamento<div class="janela-bar"><span class="jm jm-mid">J</span><span class="jm jm-mid">F</span><span class="jm jm-off">M</span><span class="jm jm-off">A</span><span class="jm jm-off">M</span><span class="jm jm-mid">J</span><span class="jm jm-on">J</span><span class="jm jm-on">A</span><span class="jm jm-on">S</span><span class="jm jm-on">O</span><span class="jm jm-mid">N</span><span class="jm jm-mid">D</span></div></div></div>
+        <div class="ficha-field"><div class="fl">Alvo principal</div><div class="fv">Broca-da-cana (<em>Diatraea saccharalis</em>) — ovos e lagartas neonatas; <em>Spodoptera frugiperda</em> (lagarta-do-cartucho)</div></div>
+        <div class="ficha-field"><div class="fl">Dose</div><div class="fv">100–150 mL/ha</div></div>
+        <div class="ficha-field"><div class="fl">Mecanismo de ação</div><div class="fv"><span class="tag tag-r">IRAC 28</span> Diamida — ativador de receptor de rianodina, colapso muscular</div></div>
+        <div class="ficha-field ficha-full"><div class="fl">Motivo agronômico</div><div class="fv">Diamida de alta eficiência contra Diatraea — complemento ao controle biológico quando a infestação supera 5–8% de intensidade. Excelente controle de Spodoptera em cana-planta no período chuvoso. Persistência de 14–21 dias. Usado em rotação com Premio® para manejo de resistência (IRAC 28 — ambos são diamidas, mas mecanismo levemente diferente).</div></div>
+        <div class="ficha-field"><div class="fl">Integração</div><div class="fv">Programa: Regent® no sulco (plantio) → monitoramento biológico (Abr–Set) → Belt® se intensidade &gt;6% após liberação de Cotesia.</div></div>
+      </div>
+    </div>
+
+    <!-- PREMIO -->
+    <div class="ficha">
+      <div class="ficha-head">
+        <h4>Premio® <span style="font-weight:300;color:var(--muted)">— Clorantraniliprole</span></h4>
+        <div style="display:flex;align-items:center;gap:8px"><span class="empresa">Corteva</span><span class="imp imp-a">Alto</span></div>
+      </div>
+      <div class="ficha-body">
+        <div class="ficha-field"><div class="fl">Posicionamento</div><div class="fv"><span class="tag tag-r">Foliar</span> <span class="tag tag-b">Sulco</span> — alta versatilidade de posicionamento</div></div>
+        <div class="ficha-field"><div class="fl">Janela</div><div class="fv"><strong>Sulco: plantio</strong> · <strong>Foliar: 30–180 DAC</strong> (pico set–out em SP)</div></div>
+        <div class="ficha-field"><div class="fl">Alvo principal</div><div class="fv"><em>Diatraea saccharalis</em>, <em>Spodoptera frugiperda</em>, cupins (sulco)</div></div>
+        <div class="ficha-field"><div class="fl">Dose</div><div class="fv">Foliar: 100–150 mL/ha · Sulco: 200–300 mL/ha</div></div>
+        <div class="ficha-field"><div class="fl">Mecanismo de ação</div><div class="fv"><span class="tag tag-r">IRAC 28</span> Diamida antranílica — receptor de rianodina</div></div>
+        <div class="ficha-field ficha-full"><div class="fl">Motivo agronômico</div><div class="fv">Clorantraniliprole é a diamida de maior volume de uso no Brasil. No sulco de plantio, protege o tolete dos primeiros ataques de pragas de solo. Foliar: excelente para Spodoptera em cana-planta e broca em fase inicial. Deve ser rotacionado com Belt® (flubendiamida) para retardar resistência no grupo IRAC 28.</div></div>
+      </div>
+    </div>
+
+    <!-- AMPLIGO -->
+    <div class="ficha">
+      <div class="ficha-head">
+        <h4>Ampligo® <span style="font-weight:300;color:var(--muted)">— Clorantraniliprole + Lambda-cialotrina</span></h4>
+        <div style="display:flex;align-items:center;gap:8px"><span class="empresa">Syngenta</span><span class="imp imp-a">Alto</span></div>
+      </div>
+      <div class="ficha-body">
+        <div class="ficha-field"><div class="fl">Posicionamento</div><div class="fv"><span class="tag tag-r">Foliar</span> — mistura pronta diamida + piretroide</div></div>
+        <div class="ficha-field"><div class="fl">Janela</div><div class="fv"><strong>30–180 DAC/DAP</strong> — pico de Diatraea e Spodoptera</div></div>
+        <div class="ficha-field"><div class="fl">Alvo principal</div><div class="fv">Broca (<em>Diatraea</em>), lagarta-do-cartucho (<em>Spodoptera</em>), cigarrinha adulta (lambda)</div></div>
+        <div class="ficha-field"><div class="fl">Dose</div><div class="fv">200–300 mL/ha</div></div>
+        <div class="ficha-field"><div class="fl">Mecanismo de ação</div><div class="fv"><span class="tag tag-r">IRAC 28</span> Clorantraniliprole + <span class="tag tag-w">IRAC 3</span> Lambda-cialotrina (piretroide)</div></div>
+        <div class="ficha-field ficha-full"><div class="fl">Motivo agronômico</div><div class="fv">Vantagem da combinação: a diamida controla lagartas mesmo resistentes a piretroides, e a lambda-cialotrina amplia o espectro para cigarrinha adulta e tripes. Dois mecanismos de ação distintos numa só aplicação — estratégia de MIR embutida. Usado em safras com alta pressão simultânea de Diatraea e Mahanarva.</div></div>
+      </div>
+    </div>
+
+    <!-- FRONDEO CANA -->
+    <div class="ficha">
+      <div class="ficha-head">
+        <h4>Frondeo® Cana <span style="font-weight:300;color:var(--muted)">— Plinazolin</span></h4>
+        <div style="display:flex;align-items:center;gap:8px"><span class="empresa">Syngenta</span><span class="imp imp-m">Médio</span></div>
+      </div>
+      <div class="ficha-body">
+        <div class="ficha-field"><div class="fl">Posicionamento</div><div class="fv"><span class="tag tag-r">Foliar</span> — específico para cigarrinha-das-raízes adulta</div></div>
+        <div class="ficha-field"><div class="fl">Janela</div><div class="fv"><strong>Abr–Jul</strong> — pico de adultos de Mahanarva fimbriolata<div class="janela-bar"><span class="jm jm-off">J</span><span class="jm jm-off">F</span><span class="jm jm-off">M</span><span class="jm jm-on">A</span><span class="jm jm-on">M</span><span class="jm jm-on">J</span><span class="jm jm-on">J</span><span class="jm jm-off">A</span><span class="jm jm-off">S</span><span class="jm jm-off">O</span><span class="jm jm-off">N</span><span class="jm jm-off">D</span></div></div></div>
+        <div class="ficha-field"><div class="fl">Alvo principal</div><div class="fv">Cigarrinha-das-raízes adulta (<em>Mahanarva fimbriolata</em>)</div></div>
+        <div class="ficha-field"><div class="fl">Dose</div><div class="fv">200–250 mL/ha</div></div>
+        <div class="ficha-field"><div class="fl">Mecanismo de ação</div><div class="fv"><span class="tag tag-t">IRAC 30</span> Plinazolin — novo grupo; modulador de receptores nicotínicos de acetilcolina</div></div>
+        <div class="ficha-field ficha-full"><div class="fl">Motivo agronômico</div><div class="fv">Produto novo com mecanismo diferente dos neonicotinóides — essencial para rotação e manejo de resistência na cigarrinha. Em áreas com falhas no controle biológico (Metarhizium) por clima desfavorável, Frondeo® entra como complemento químico de alta seletividade. Uso restrito ao período de voo dos adultos.</div></div>
+        <div class="ficha-field"><div class="fl">Regiões</div><div class="fv">SP (Piracicaba, Ribeirão Preto), GO — onde cigarrinha é problema endêmico</div></div>
+      </div>
+    </div>
+
+    <!-- EVIDENCE -->
+    <div class="ficha">
+      <div class="ficha-head">
+        <h4>Evidence® <span style="font-weight:300;color:var(--muted)">— Imidacloprido</span></h4>
+        <div style="display:flex;align-items:center;gap:8px"><span class="empresa">Bayer</span><span class="imp imp-a">Alto</span></div>
+      </div>
+      <div class="ficha-body">
+        <div class="ficha-field"><div class="fl">Posicionamento</div><div class="fv"><span class="tag tag-b">Sulco de plantio</span> — tratamento solo para pragas iniciais</div></div>
+        <div class="ficha-field"><div class="fl">Janela</div><div class="fv"><strong>No plantio</strong> — frequentemente misturado com Regent®</div></div>
+        <div class="ficha-field"><div class="fl">Alvo principal</div><div class="fv">Cigarrinha-das-raízes ninfas, cupins, pragas de solo no estabelecimento</div></div>
+        <div class="ficha-field"><div class="fl">Dose</div><div class="fv">700 g/ha (Imidacloprido 700 WG)</div></div>
+        <div class="ficha-field"><div class="fl">Mecanismo de ação</div><div class="fv"><span class="tag tag-w">IRAC 4A</span> Neonicotinóide — agonista nicotínico de acetilcolina</div></div>
+        <div class="ficha-field ficha-full"><div class="fl">Motivo agronômico</div><div class="fv">Usado como complemento ao fipronil no sulco, especialmente em áreas com alta pressão de cigarrinha. Sistemia ascendente — protege as primeiras folhas emergentes. Atenção às restrições regulatórias crescentes sobre neonicotinóides em áreas próximas a polinizadores.</div></div>
+      </div>
+    </div>
+
+    <!-- VERIMARK -->
+    <div class="ficha">
+      <div class="ficha-head">
+        <h4>Verimark® <span style="font-weight:300;color:var(--muted)">— Ciantraniliprole</span></h4>
+        <div style="display:flex;align-items:center;gap:8px"><span class="empresa">FMC</span><span class="imp imp-m">Médio</span></div>
+      </div>
+      <div class="ficha-body">
+        <div class="ficha-field"><div class="fl">Posicionamento</div><div class="fv"><span class="tag tag-b">Sulco</span> <span class="tag tag-r">Foliar</span> — alta versatilidade</div></div>
+        <div class="ficha-field"><div class="fl">Janela</div><div class="fv"><strong>Sulco: plantio</strong> · <strong>Foliar: 30–150 DAC</strong></div></div>
+        <div class="ficha-field"><div class="fl">Alvo principal</div><div class="fv"><em>Diatraea saccharalis</em>, <em>Spodoptera</em>, pragas de solo no plantio</div></div>
+        <div class="ficha-field"><div class="fl">Dose</div><div class="fv">Sulco: 600–800 mL/ha · Foliar: 300–400 mL/ha</div></div>
+        <div class="ficha-field"><div class="fl">Mecanismo de ação</div><div class="fv"><span class="tag tag-r">IRAC 28</span> Diamida antranílica — receptor de rianodina</div></div>
+        <div class="ficha-field ficha-full"><div class="fl">Motivo agronômico</div><div class="fv">Ciantraniliprole difere levemente do clorantraniliprole na seletividade — permite posicionamento em sulco com maior segurança para inimigos naturais do solo. Excelente para integrar ao programa de biológicos sem interferir no Metarhizium ou Cotesia. Rotacionar com Belt® e Premio® para gestão de resistência IRAC 28.</div></div>
+      </div>
+    </div>
+
+    <!-- ACTARA / ENGEO -->
+    <div class="ficha">
+      <div class="ficha-head">
+        <h4>Actara® / Engeo® Pleno S <span style="font-weight:300;color:var(--muted)">— Tiametoxam / Tiametoxam+Lambda</span></h4>
+        <div style="display:flex;align-items:center;gap:8px"><span class="empresa">Syngenta</span><span class="imp imp-a">Alto</span></div>
+      </div>
+      <div class="ficha-body">
+        <div class="ficha-field"><div class="fl">Posicionamento</div><div class="fv"><span class="tag tag-r">Foliar</span> — controle de cigarrinha adulta e pragas sugadoras</div></div>
+        <div class="ficha-field"><div class="fl">Janela</div><div class="fv"><strong>Abr–Jul</strong> (pico cigarrinha adulta) + quando houver presença de pulgão-da-cana<div class="janela-bar"><span class="jm jm-off">J</span><span class="jm jm-off">F</span><span class="jm jm-off">M</span><span class="jm jm-on">A</span><span class="jm jm-on">M</span><span class="jm jm-on">J</span><span class="jm jm-on">J</span><span class="jm jm-mid">A</span><span class="jm jm-off">S</span><span class="jm jm-off">O</span><span class="jm jm-off">N</span><span class="jm jm-off">D</span></div></div></div>
+        <div class="ficha-field"><div class="fl">Alvo principal</div><div class="fv">Cigarrinha adulta (<em>Mahanarva</em>), pulgão-da-cana, trips; Engeo® + lambda ampliam para lagartas jovens</div></div>
+        <div class="ficha-field"><div class="fl">Dose</div><div class="fv">Actara: 100–200 g/ha · Engeo Pleno S: 300–400 mL/ha</div></div>
+        <div class="ficha-field"><div class="fl">Mecanismo de ação</div><div class="fv"><span class="tag tag-w">IRAC 4A</span> Tiametoxam (neonicotinóide) + <span class="tag tag-w">IRAC 3</span> Lambda-cialotrina (piretroide — Engeo®)</div></div>
+        <div class="ficha-field ficha-full"><div class="fl">Motivo agronômico</div><div class="fv">Tiametoxam tem sistemia rápida — absorção foliar e translocação em 2–4h. Engeo® é a opção quando há pressão simultânea de cigarrinha adulta e lagartas, pois combina dois mecanismos. Usar apenas quando o monitoramento confirmar adultos acima do ND — evitar aplicações preventivas que prejudicam o biológico (Metarhizium).</div></div>
+        <div class="ficha-field"><div class="fl">Regiões</div><div class="fv">SP, GO, MS — todas as regiões com cigarrinha endêmica</div></div>
+      </div>
+    </div>
+
+    <div class="source-note">Fontes: AGROFIT/MAPA, Embrapa CNPMA, CTC Pragas 2024, IRAC BR 2024, boletins técnicos Syngenta/Bayer/BASF/Corteva/FMC.</div>
+  </div>
+
+<!-- ═══ CANA: HEATMAP ═══ -->
+  <div id="cana-heatmap" class="tab-content">
+
+    <style>
+    /* ── heatmap shell ── */
+    .hm-wrap { overflow-x: auto; padding-bottom: 8px; }
+    .hm-header {
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 12px;
+      margin-bottom: 20px;
+    }
+    .hm-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.1rem; color: #fff; letter-spacing: -.2px;
+    }
+    .hm-title span { font-style: italic; color: var(--lime2); }
+    .hm-filters { display: flex; gap: 6px; }
+    .hm-filter-btn {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 20px; padding: 5px 14px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px; font-weight: 500;
+      color: rgba(232,240,245,0.5);
+      cursor: pointer; transition: all .15s;
+    }
+    .hm-filter-btn:hover { color: #e8f0f5; border-color: rgba(255,255,255,0.25); }
+    .hm-filter-btn.on {
+      background: rgba(168,200,32,0.14);
+      border-color: rgba(168,200,32,0.4);
+      color: var(--lime2);
+    }
+
+    /* ── grid ── */
+    .hm-grid {
+      display: grid;
+      /* col 0 = label, cols 1-12 = months */
+      grid-template-columns: 190px repeat(12, 1fr);
+      gap: 3px;
+    }
+    .hm-month-label {
+      grid-column: span 1;
+      text-align: center;
+      font-size: 10px; font-weight: 600;
+      padding: 6px 0 10px;
+      letter-spacing: .3px;
+      transition: color .2s;
+    }
+    .hm-month-label.safra { color: var(--lime2); }
+    .hm-month-label.off   { color: rgba(232,240,245,0.25); }
+    .hm-spacer { grid-column: 1; } /* empty top-left corner */
+
+    /* group header row */
+    .hm-group-label {
+      grid-column: 1 / -1;
+      font-size: 9.5px; font-weight: 700;
+      letter-spacing: 1.2px; text-transform: uppercase;
+      padding: 14px 4px 4px;
+    }
+    .hm-group-label.herb  { color: rgba(168,200,32,0.55); }
+    .hm-group-label.insec { color: rgba(216,90,48,0.60); }
+
+    /* product name */
+    .hm-prod {
+      font-size: 11px; font-weight: 500;
+      color: rgba(232,240,245,0.75);
+      padding: 3px 6px 3px 0;
+      display: flex; align-items: center;
+      white-space: nowrap;
+      cursor: default;
+      transition: color .15s;
+    }
+    .hm-prod:hover { color: #e8f0f5; }
+
+    /* cell pill */
+    .hm-cell {
+      border-radius: 5px;
+      height: 26px;
+      transition: transform .12s, opacity .12s;
+      cursor: default;
+      position: relative;
+    }
+    .hm-cell:hover { transform: scale(1.18); z-index: 5; }
+    .hm-cell.v0 { background: rgba(255,255,255,0.04); }
+    .hm-cell.v1 { background: rgba(100,148,170,0.32); }
+    .hm-cell.v2 { background: rgba(29,158,117,0.44); }
+    .hm-cell.v3 { background: rgba(186,117,23,0.62); }
+    .hm-cell.v4 { background: rgba(210,78,36,0.80); }
+    .hm-cell.v5 {
+      background: #a8c820;
+      box-shadow: 0 0 8px rgba(168,200,32,0.35);
+    }
+    /* safra column ghost tint */
+    .hm-cell.safra-col.v0 { background: rgba(168,200,32,0.05); }
+
+    /* ── legend ── */
+    .hm-legend {
+      display: flex; align-items: center; gap: 16px;
+      flex-wrap: wrap; margin-top: 16px;
+    }
+    .hm-legend-item {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 10.5px; color: rgba(232,240,245,0.5);
+    }
+    .hm-legend-swatch {
+      width: 22px; height: 10px; border-radius: 3px; flex-shrink: 0;
+    }
+    .hm-safra-note {
+      margin-left: auto;
+      font-size: 10px; color: rgba(168,200,32,0.4);
+      font-style: italic;
+    }
+    </style>
+
+    <div class="hm-header">
+      <div class="hm-title">Intensidade de uso <span>por produto × mês</span></div>
+      <div class="hm-filters">
+        <button class="hm-filter-btn on" onclick="hmFilter('todos',this)">Todos</button>
+        <button class="hm-filter-btn" onclick="hmFilter('herb',this)">Herbicidas</button>
+        <button class="hm-filter-btn" onclick="hmFilter('insec',this)">Inseticidas</button>
+      </div>
+    </div>
+
+    <div class="hm-wrap">
+      <div class="hm-grid" id="hm-grid"></div>
+    </div>
+
+    <div class="hm-legend">
+      <div class="hm-legend-item"><div class="hm-legend-swatch" style="background:rgba(255,255,255,0.04)"></div>Sem uso</div>
+      <div class="hm-legend-item"><div class="hm-legend-swatch" style="background:rgba(100,148,170,0.32)"></div>Pontual</div>
+      <div class="hm-legend-item"><div class="hm-legend-swatch" style="background:rgba(29,158,117,0.44)"></div>Baixo</div>
+      <div class="hm-legend-item"><div class="hm-legend-swatch" style="background:rgba(186,117,23,0.62)"></div>Moderado</div>
+      <div class="hm-legend-item"><div class="hm-legend-swatch" style="background:rgba(210,78,36,0.80)"></div>Intenso</div>
+      <div class="hm-legend-item"><div class="hm-legend-swatch" style="background:#a8c820;box-shadow:0 0 6px rgba(168,200,32,0.4)"></div>Muito alto</div>
+      <span class="hm-safra-note">Mai – Set = safra principal SP</span>
+    </div>
+
+    <div class="source-note" style="margin-top:12px">Cana-soca · Centro-Sul (SP, GO, MG, MS) · Safra 2024/25. Intensidades baseadas em práticas operacionais das usinas do Centro-Sul.</div>
+  </div>
+
+<!-- ═══ CANA: CALENDÁRIO EXECUTIVO ═══ -->
+  <div id="cana-calexec" class="tab-content">
+    <div class="info"><strong>Calendário executivo — 12 meses · cana-soca safra principal (São Paulo)</strong> Integra herbicidas, inseticidas, biológicos e maturadores com o estágio fenológico e motivo agronômico.</div>
+    <div class="tbl-wrap"><table id="cal-exec-table">
+      <thead><tr><th>Mês</th><th>Estágio da cana</th><th>Herbicidas recomendados</th><th>Inseticidas / Biológicos</th><th>Motivo agronômico</th></tr></thead>
+      <tbody id="cal-exec-body"></tbody>
+    </table></div>
+    <div class="source-note">Calendário para cana-soca — safra centro-sul SP. Cana-planta tem início em set–nov com programa similar porém com adição de Regent® / Premio® no sulco.</div>
+  </div>
+
+<!-- ═══ CANA: FUNGICIDAS / MATURADORES ═══ -->
+  <div id="cana-fung" class="tab-content">
+    <div class="info"><strong>Filosofia diferente das demais culturas</strong> Na cana, o controle de doenças fúngicas é feito principalmente por variedades resistentes (RB, SP, CTC). Os maturadores químicos são o produto mais estratégico: definem quando e como a colheita ocorre.</div>
+    <div class="subsect">Principais doenças e estratégias</div>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Doença</th><th>Agente</th><th>Impacto</th><th>Controle principal</th><th>Fungicida foliar?</th></tr></thead>
+      <tbody>
+        <tr><td>Carvão</td><td><em>Sporisorium scitamineum</em></td><td>Perde ATR; chicote reduz estande</td><td>Variedade resistente; termoterapia tolete (50°C / 2h)</td><td>Carboxina + tiram (tolete)</td></tr>
+        <tr><td>Ferrugem marrom</td><td><em>Puccinia melanocephala</em></td><td>Desfolha 5–25%</td><td>Variedade resistente; fungicida foliar em surtos</td><td>Trifloxistrobina + propiconazol</td></tr>
+        <tr><td>Ferrugem laranja</td><td><em>Puccinia kuehnii</em></td><td>Mais agressiva — surgiu no Brasil em 2009</td><td>Variedade resistente; triazol em surtos</td><td>Azoxistrobina + ciproconazol</td></tr>
+        <tr><td>Escaldadura</td><td><em>Xanthomonas albilineans</em></td><td>Murcha e morte de ponteiros</td><td>Termoterapia; erradicação</td><td>Bacteriose — não aplicável</td></tr>
+        <tr><td>Raquitismo da soqueira</td><td><em>Leifsonia xyli subsp. xyli</em></td><td>Reduz TCH 10–30% silenciosamente</td><td>Termoterapia; cultivares limpas</td><td>Bacteriose — não aplicável</td></tr>
+      </tbody>
+    </table></div>
+    <div class="subsect" style="margin-top:1.5rem">Maturadores — posicionamento estratégico</div>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Produto</th><th>IA</th><th>Dose</th><th>Janela (dias antes colheita)</th><th>Efeito</th><th>Custo</th></tr></thead>
+      <tbody>
+        <tr><td>Ethrel / Sett</td><td>Etefon</td><td>0,5–1,5 L/ha</td><td>40–60 dias (Jul–Set SP)</td><td>Eleva pol 1–3 pts; antecipa maturação</td><td>R$ 80–150/ha</td></tr>
+        <tr><td>Curavial / Moddus</td><td>Trinexapac-etil</td><td>0,3–0,5 L/ha</td><td>45–60 dias</td><td>Inibe alongamento; concentra sacarose</td><td>R$ 90–160/ha</td></tr>
+        <tr><td>Grasp / Cuadro</td><td>Sulfometuron-metil</td><td>16–24 g/ha</td><td>45–55 dias</td><td>Inibe ALS; maturação rápida</td><td>R$ 70–120/ha</td></tr>
+        <tr><td>Roundup® subdose</td><td>Glifosato</td><td>270–360 g e.a./ha</td><td>40–50 dias</td><td>Eleva pol; maturação rápida</td><td>R$ 30–60/ha</td></tr>
+      </tbody>
+    </table></div>
+    <div class="alert"><strong>Margens estreitas em sulfometuron e glifosato subdose</strong> Excesso de dose inibe rebrota da soca. Erro de 10–15 dias no timing = 1–2 pontos de pol = R$ 80–240/ha de impacto.</div>
+  </div>
+
+<!-- ═══ CANA: NUTRIÇÃO ═══ -->
+  <div id="cana-nutr" class="tab-content">
+    <div class="info"><strong>A vinhaça e a torta de filtro — vantagem competitiva única da cana paulista</strong> Subprodutos internos da usina que substituem fertilizantes minerais. Principal diferencial de custo entre usinas maduras de SP e unidades novas em GO/MT.</div>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Resíduo</th><th>Volume / dose</th><th>NPK médio</th><th>Substituição mineral</th><th>Logística</th></tr></thead>
+      <tbody>
+        <tr><td>Vinhaça</td><td>100–250 m³/ha/ano</td><td>K: 1,0–1,8 g/L; Ca; Mg</td><td>Substitui 80–100% do K mineral</td><td>Fertirrigação; raio ~40 km da usina</td></tr>
+        <tr><td>Torta de filtro</td><td>8–20 t/ha</td><td>N: 1,2–1,8%; P₂O₅: 1,5–2,5%</td><td>Substitui 40–60 kg N/ha e 30–50 kg P₂O₅/ha</td><td>Sulco de plantio</td></tr>
+        <tr><td>Cinzas de caldeira</td><td>2–4 t/ha</td><td>Ca: 20–30%; K: 5–8%</td><td>Substitui calcário + parte do K</td><td>Mistura com vinhaça</td></tr>
+      </tbody>
+    </table></div>
+    <div class="grid-2" style="margin-top:1rem">
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>Nutriente</th><th>Cana-planta</th><th>Soca</th><th>Época</th></tr></thead>
+        <tbody>
+          <tr><td>N</td><td>40–60 kg/ha (sulco)</td><td>60–130 kg/ha</td><td>30–45 DAC</td></tr>
+          <tr><td>P₂O₅</td><td>80–120 kg/ha</td><td>40–60 kg/ha</td><td>Plantio/pós-corte</td></tr>
+          <tr><td>K₂O</td><td>100–150 kg/ha</td><td>80–120 kg/ha + vinhaça</td><td>Plantio + cobertura</td></tr>
+          <tr><td>Calcário</td><td>2–5 t/ha (PRNT 80%)</td><td>A cada 3–4 ciclos</td><td>30–60 dias antes do plantio</td></tr>
+        </tbody>
+      </table></div>
+      <div class="grid-2" style="gap:.5rem;margin:0">
+        <div class="kpi"><div class="lbl">Econ. com K (vinhaça)</div><div class="val">R$ 300–700</div><div class="sub">por ha / ciclo</div></div>
+        <div class="kpi"><div class="lbl">Econ. com P+N (torta)</div><div class="val">R$ 200–420</div><div class="sub">por ha / plantio</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ═══════════════════════════════════════════════
+     CAFÉ
+═══════════════════════════════════════════════ -->
+<div id="cafe" class="section">
+  <div class="sect-header">
+    <div class="sect-num">04</div>
+    <div class="sect-title-block">
+      <h2>Café</h2>
+      <p>2,2 milhões de hectares · arábica (MG, SP, BA) e conilon (ES, BA, RO) · cultura bienal perene</p>
+    </div>
+  </div>
+
+  <div class="tab-strip">
+    <button class="tab-btn active" onclick="showTab('cafe','herb')">Herbicidas</button>
+    <button class="tab-btn" onclick="showTab('cafe','fung')">Fungicidas</button>
+    <button class="tab-btn" onclick="showTab('cafe','insec')">Inseticidas</button>
+    <button class="tab-btn" onclick="showTab('cafe','nutr')">Nutrição / bienalidade</button>
+    <button class="tab-btn" onclick="showTab('cafe','cal')">Calendário</button>
+  </div>
+
+  <div id="cafe-herb" class="tab-content active">
+    <div class="info">
+      <strong>Lógica diferente das culturas anuais</strong>
+      No café, a roçagem mecânica das entrelinhas é padrão em lavouras tecnificadas — preserva matéria orgânica, reduz erosão e mantém fauna benéfica. O herbicida é usado principalmente na linha de plantio (sob a copa), onde a roçadeira não alcança. Excesso de herbicidas na entrelinha degrada o solo e reduz a sustentabilidade do sistema.
+    </div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Área</th><th>IA / sistema</th><th>Dose</th><th>Época ideal</th><th>Alvo principal</th></tr></thead>
+        <tbody>
+          <tr><td rowspan="3" style="vertical-align:middle; font-weight:500">Linha (sob a copa)</td><td>Glifosato dirigido</td><td>1,5–2,5 L/ha (aplic. dirigida)</td><td>Jun–Ago (período seco) e Dez–Jan</td><td>Gramíneas e folhas largas; 2 aplic./ano</td></tr>
+          <tr><td>Oxyfluorfen (pré-emergência)</td><td>1,0–2,0 L/ha</td><td>Jul–Ago (pré-chuvas)</td><td>Residual 60–90 dias; excelente para capim-marmelada</td></tr>
+          <tr><td>Glufosinate-amônio</td><td>1,5–2,5 L/ha</td><td>Complementar</td><td>Folhas largas resistentes ao glifosato</td></tr>
+          <tr><td>Entrelinha</td><td>Roçagem mecânica</td><td>—</td><td>Fev–Mar, Mai–Jun, Set (3x/ano)</td><td>Mantém 30–40 cm de altura; preserva solo e fauna</td></tr>
+          <tr><td>Entrelinha (eventual)</td><td>Glifosato área total</td><td>2,0–3,0 L/ha</td><td>Jun–Jul</td><td>Apenas quando infestação impede roçagem; pré-colheita mecânica</td></tr>
+          <tr><td>Caso específico</td><td>Tebuthiuron</td><td>0,8–1,2 kg/ha</td><td>Pré-emergência período seco</td><td>Tiririca (Cyperus sp.) e espécies resistentes</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="success">
+      <strong>Espécies problema no café</strong>
+      Brachiaria decumbens e capim-gordura nas entrelinhas — manejadas com roçagem. Tiririca e picão-preto na linha — sulfentrazone ou tebuthiuron. O uso excessivo de glifosato na linha pode reduzir matéria orgânica do solo e aumentar a lixiviação de K e Ca, prejudicando a qualidade do café nas análises foliares.
+    </div>
+  </div>
+
+  <div id="cafe-fung" class="tab-content">
+    <div class="alert">
+      <strong>Ferrugem-do-cafeeiro (Hemileia vastatrix) — principal ameaça fitossanitária</strong>
+      Sem controle, causa 35–50% de perda em anos de alta incidência no arábica. O custo do programa fungicida representa 15–25% do custo total de produção do café. O momento da aplicação é determinante: a ferrugem avança muito rapidamente em condições de molhamento foliar acima de 10 horas seguidas.
+    </div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>IA / grupo</th><th>Dose</th><th>Modo de ação</th><th>Posicionamento no ciclo</th><th>Alvo primário</th></tr></thead>
+        <tbody>
+          <tr><td>Cobre (hidróxido ou oxicloreto)</td><td>1,5–3,0 kg/ha</td><td><span class="tag tag-w">FRAC M1 — contato multissítio</span></td><td>Pré-floração (Set) e início das chuvas (Out–Nov)</td><td>Ferrugem (preventivo); cercospora; phoma</td></tr>
+          <tr><td>Ciproconazol</td><td>100–200 g/ha</td><td><span class="tag tag-b">FRAC 3 — DMI triazol</span></td><td>1ª sistêmica pós-floração (Nov–Dez)</td><td>Ferrugem; cercospora</td></tr>
+          <tr><td>Tebuconazol</td><td>0,75–1,0 L/ha</td><td><span class="tag tag-b">FRAC 3 — DMI</span></td><td>2ª–3ª aplic. Jan–Mar (granação)</td><td>Ferrugem; melhor eficiência na fase de granação</td></tr>
+          <tr><td>Azoxistrobina + ciproconazol</td><td>0,3 L/ha</td><td><span class="tag tag-p">FRAC 11+3</span></td><td>Dez–Fev (pico de risco)</td><td>Ferrugem + cercospora; boa persistência</td></tr>
+          <tr><td>Flutriafol</td><td>0,5–1,0 L/ha</td><td><span class="tag tag-b">FRAC 3</span></td><td>Curativo precoce (até 10 dias pós-infecção)</td><td>Ferrugem em surtos tardios</td></tr>
+          <tr><td>Mancozebe (ditiocarbamato)</td><td>2,0–3,0 kg/ha</td><td><span class="tag tag-w">FRAC M3 — contato multissítio</span></td><td>Preventivo complementar</td><td>Ferrugem + cercospora + phoma (amplo espectro)</td></tr>
+          <tr><td>Iprodiona</td><td>1,0–1,5 L/ha</td><td><span class="tag tag-w">FRAC 2 — SDHI clássico</span></td><td>Jan–Mar (período chuvoso)</td><td>Cercospora (CBD); mancha-de-phoma</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="subsect" style="margin-top:1.5rem">Programa anual — arábica MG (ano de alta carga — bienal ON)</div>
+    <div class="rot-box">
+      <div class="rot-step"><div class="rot-num">1</div><div><strong>Setembro (pré-floração):</strong><p>Cobre hidróxido 2 kg/ha (protetor). Último tratamento antes das flores abertas — não aplicar com flores abertas para não prejudicar a polinização.</p></div></div>
+      <div class="rot-step"><div class="rot-num">2</div><div><strong>Novembro–Dezembro:</strong><p>Azoxistrobina + ciproconazol — 1ª sistêmica pós-floração. Cobre residual pode ser incluído como complemento preventivo.</p></div></div>
+      <div class="rot-step"><div class="rot-num">3</div><div><strong>Janeiro–Fevereiro:</strong><p>Tebuconazol — fase de granação. Alta pressão de ferrugem no período chuvoso; monitorar semanalmente.</p></div></div>
+      <div class="rot-step"><div class="rot-num">4</div><div><strong>Março–Abril:</strong><p>Triazol + iprodiona — proteção final da granação e controle de cercospora antes da colheita.</p></div></div>
+    </div>
+    <div class="info">
+      <strong>Conilon (Coffea canephora) — ES e BA</strong>
+      Ferrugem tem menor pressão que no arábica — 2–3 aplicações/ano geralmente suficientes. Cercospora é o maior problema no conilon — 3–5 aplicações de triazol. Seca de ponteiros (Phoma + Botryosphaeria) exige triazol sistêmico.
+    </div>
+  </div>
+
+  <div id="cafe-insec" class="tab-content">
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Praga</th><th>Fase de ataque</th><th>ND</th><th>IAs / biológicos</th><th>IRAC</th></tr></thead>
+        <tbody>
+          <tr><td>Broca-do-café<br><em>Hypothenemus hampei</em></td><td>Frutos em formação e maduros (chumbinho–cereja)</td><td>2–3% frutos brocados (monitoramento armadilha BROCAP)</td><td>Clorpirifós; cipermetrina; Beauveria bassiana (biológico); Cephalonomia stephanoderis (parasitoide)</td><td><span class="tag tag-a">1B</span> / <span class="tag tag-t">Biológico</span></td></tr>
+          <tr><td>Bicho-mineiro<br><em>Leucoptera coffeella</em></td><td>Folhas jovens — ponteiros</td><td>30% folíolos com minas ativas</td><td>Espinosade, azadiractina (neem), imidacloprido, Bt aizawai; Chrysoperla carnea (predador)</td><td><span class="tag tag-t">5 / 11</span> / <span class="tag tag-w">4A</span></td></tr>
+          <tr><td>Ácaro-vermelho<br><em>Oligonychus ilicis</em></td><td>Folhas adultas (período seco)</td><td>30–40% folhas infestadas</td><td>Abamectina, dicofol, propargita; enxofre mineral</td><td><span class="tag tag-w">6</span></td></tr>
+          <tr><td>Trips (Frankliniella)</td><td>Flores e frutos jovens</td><td>Em floração (raro ND isolado)</td><td>Espinosade, imidacloprido</td><td><span class="tag tag-t">5</span> / <span class="tag tag-w">4A</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="subsect" style="margin-top:1.5rem">Monitoramento da broca — armadilha BROCAP</div>
+    <div class="phase-row"><div class="phase-tag">Out–Nov</div><div class="phase-content"><strong>Instalação das armadilhas:</strong> BROCAP com mistura atrativa de metanol + etanol. Meta: 1 armadilha/ha em áreas de alto risco histórico.</div></div>
+    <div class="phase-row"><div class="phase-tag">Dez–Fev</div><div class="phase-content"><strong>Contagem semanal:</strong> &gt;5 brocas/armadilha/dia = nível de alerta. &gt;15 = nível de ação (aplicar Beauveria bassiana ou inseticida químico).</div></div>
+    <div class="phase-row"><div class="phase-tag">Abr–Mai</div><div class="phase-content"><strong>Pós-colheita:</strong> varredura total dos frutos remanescentes no solo e na planta. Destruição dos frutos mumificados é fundamental — são o principal reservatório de inóculo para a próxima safra.</div></div>
+    <div class="success">
+      <strong>Beauveria bassiana — o broqueiro biológico</strong>
+      Dose: 1–3×10¹³ conídios/ha. Época: pós-floração, a partir do chumbinho. Eficiência de campo: 50–70% de redução de infestação. Adoção em ~22% das lavouras tecnificadas de MG/SP em 2024. Restrição: temperatura acima de 32°C reduz viabilidade dos conídios — aplicar no período fresco da manhã.
+    </div>
+  </div>
+
+  <div id="cafe-nutr" class="tab-content">
+    <div class="info">
+      <strong>Bienalidade do café arábica — o maior desafio agronômico da cultura</strong>
+      Em anos de alta carga (ON), a planta esgota suas reservas de carboidratos e nutrientes, resultando em ano seguinte de baixa produção (OFF). Lavouras bem nutridas têm coeficiente de bienalidade 30–50% menor que lavouras com manejo nutricional inadequado.
+    </div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Fase fenológica</th><th>Mês</th><th>N (kg/ha)</th><th>P₂O₅ (kg/ha)</th><th>K₂O (kg/ha)</th><th>Objetivo principal</th></tr></thead>
+        <tbody>
+          <tr><td>Formação dos botões florais</td><td>Ago–Set</td><td>40–60</td><td>20–30</td><td>60–80</td><td>Reserva para floração; K favorece qualidade dos botões florais</td></tr>
+          <tr><td>Pós-floração / chumbinho</td><td>Out–Nov</td><td>60–80</td><td>30–50</td><td>80–100</td><td>Fixação dos frutos; N na forma nítrica favorece o pegamento</td></tr>
+          <tr><td>Expansão celular dos frutos</td><td>Dez–Jan</td><td>60–80</td><td>20–30</td><td>100–120</td><td>K é o nutriente mais demandado — fase de maior absorção</td></tr>
+          <tr><td>Granação</td><td>Jan–Mar</td><td>40–60</td><td>15–25</td><td>80–100</td><td>N reduzido para não atrasar maturação; K mantém qualidade</td></tr>
+          <tr><td>Pós-colheita / regeneração</td><td>Mai–Jul</td><td>80–120</td><td>40–60</td><td>80–100</td><td>Reposição de reservas; estímulo à brotação do próximo ciclo</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="grid-4" style="margin-top:1rem">
+      <div class="kpi"><div class="lbl">N anual (arábica)</div><div class="val">200–500</div><div class="sub">kg/ha/ano — maior dose entre as 4 culturas</div></div>
+      <div class="kpi"><div class="lbl">P₂O₅ anual</div><div class="val">80–160</div><div class="sub">kg/ha/ano</div></div>
+      <div class="kpi"><div class="lbl">K₂O anual</div><div class="val">200–450</div><div class="sub">kg/ha/ano</div></div>
+      <div class="kpi"><div class="lbl">Custo adubação</div><div class="val">R$ 1.100–2.560</div><div class="sub">por ha/ano</div></div>
+    </div>
+    <div class="success">
+      <strong>Adubação foliar complementar</strong>
+      Boro (B) na pré-floração aumenta pegamento de frutos em 10–25%. Zinco + manganês no período vegetativo intenso. Cálcio + boro na granação reduz frutos boia. Molibdênio favorece a fixação simbiótica de N em cafezais com leguminosas de cobertura.
+    </div>
+  </div>
+
+  <div id="cafe-cal" class="tab-content">
+    <div class="info">
+      <strong>Café arábica — MG · dois ciclos consecutivos</strong>
+      O cafeeiro é bienal — a carga de frutos do ano atual determina a intensidade do manejo fitossanitário do ano seguinte. Anos de alta carga (ON) exigem 1–2 aplicações extras de fungicida.
+    </div>
+    <div class="cal-legend">
+      <div class="cal-legend-item"><div class="cal-swatch c-herb"></div>Herbicida intenso</div>
+      <div class="cal-legend-item"><div class="cal-swatch c-herb-l"></div>Herbicida leve</div>
+      <div class="cal-legend-item"><div class="cal-swatch c-fung"></div>Fungicida intenso</div>
+      <div class="cal-legend-item"><div class="cal-swatch c-fung-l"></div>Fungicida preventivo</div>
+      <div class="cal-legend-item"><div class="cal-swatch c-insec"></div>Inseticida intenso</div>
+      <div class="cal-legend-item"><div class="cal-swatch c-insec-l"></div>Inseticida / monitoramento</div>
+      <div class="cal-legend-item"><div class="cal-swatch c-plant"></div>Floração / desenvolvimento</div>
+      <div class="cal-legend-item"><div class="cal-swatch c-harvest"></div>Colheita</div>
+    </div>
+    <div class="cal-wrap" id="cafe-cal-table"></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     COMPARATIVO & CUSTOS
+═══════════════════════════════════════════════ -->
+<div id="comparativo" class="section">
+  <div class="sect-header">
+    <div class="sect-num">05</div>
+    <div class="sect-title-block">
+      <h2>Comparativo & Custos</h2>
+      <p>Visão consolidada das quatro culturas — defensivos, aplicações e custo por hectare</p>
+    </div>
+  </div>
+
+  <div class="subsect">Número de aplicações por categoria — safra referência</div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Cultura</th><th>Herbicidas (aplic./ciclo)</th><th>Fungicidas (aplic./ciclo)</th><th>Inseticidas (aplic./ciclo)</th><th>Total</th></tr></thead>
+      <tbody>
+        <tr><td>Soja</td><td>2–4 (dessecação + pré + pós)</td><td>2–4 (ferrugem asiática)</td><td>3–6 (lagartas + percevejos)</td><td>7–14</td></tr>
+        <tr><td>Milho 1ª safra</td><td>2–3</td><td>1–2</td><td>2–5 (lagarta-do-cartucho)</td><td>5–10</td></tr>
+        <tr><td>Milho 2ª safra (safrinha)</td><td>2–3</td><td>2–3 (maior pressão)</td><td>3–6</td><td>7–12</td></tr>
+        <tr><td>Cana (por corte)</td><td>2–3</td><td>0–1 (fung.) + 1–2 (maturadores)</td><td>1–3 (biológico predomina)</td><td>4–8</td></tr>
+        <tr><td>Café arábica (ano ON)</td><td>2–3 (linha)</td><td>3–6 (ferrugem)</td><td>2–5 (broca + bicho-mineiro)</td><td>7–14</td></tr>
+        <tr><td>Café arábica (ano OFF)</td><td>2–3</td><td>2–4</td><td>2–4</td><td>6–11</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="subsect" style="margin-top:1.5rem">Custo total de defensivos por hectare — safra 2024/25</div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Cultura</th><th>Herbicidas</th><th>Fungicidas</th><th>Inseticidas / biológicos</th><th>TSI / TS</th><th>Total defensivos</th><th>% custo total prod.</th></tr></thead>
+      <tbody>
+        <tr><td>Soja</td><td>R$ 280–520</td><td>R$ 380–850</td><td>R$ 150–420</td><td>R$ 80–160</td><td><strong>R$ 890–1.950</strong></td><td>28–38%</td></tr>
+        <tr><td>Milho 1ª safra</td><td>R$ 180–340</td><td>R$ 120–300</td><td>R$ 180–400</td><td>R$ 80–160</td><td><strong>R$ 560–1.200</strong></td><td>18–26%</td></tr>
+        <tr><td>Milho 2ª safra</td><td>R$ 220–420</td><td>R$ 280–650</td><td>R$ 180–480</td><td>R$ 80–160</td><td><strong>R$ 760–1.710</strong></td><td>24–34%</td></tr>
+        <tr><td>Cana (por corte)</td><td>R$ 280–520</td><td>R$ 80–200 (matur.)</td><td>R$ 80–140 (biológico)</td><td>—</td><td><strong>R$ 440–860</strong></td><td>8–15%</td></tr>
+        <tr><td>Café arábica</td><td>R$ 280–520</td><td>R$ 380–900</td><td>R$ 250–680</td><td>—</td><td><strong>R$ 910–2.100</strong></td><td>22–32%</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="subsect" style="margin-top:1.5rem">Custo por aplicação — referência Centro-Oeste (produto + operação)</div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Tipo de aplicação</th><th>Produto típico</th><th>Custo produto</th><th>Operação aérea</th><th>Operação terrestre</th><th>Total / ha</th></tr></thead>
+      <tbody>
+        <tr><td>Dessecação pré-plantio (soja)</td><td>Glifosato + 2,4-D</td><td>R$ 45–70</td><td>R$ 40–55</td><td>R$ 25–35</td><td>R$ 70–125</td></tr>
+        <tr><td>Herbicida pré-emergência</td><td>Metribuzin + clomazone</td><td>R$ 90–140</td><td>R$ 40–55</td><td>R$ 25–35</td><td>R$ 115–195</td></tr>
+        <tr><td>Fungicida (tripla mistura)</td><td>SDHI + estrobilurina + triazol</td><td>R$ 140–220</td><td>R$ 45–60</td><td>R$ 35–50</td><td>R$ 175–280</td></tr>
+        <tr><td>Inseticida foliar (soja/milho)</td><td>Piretroide + neonicotinóide</td><td>R$ 35–90</td><td>R$ 40–55</td><td>R$ 25–35</td><td>R$ 60–145</td></tr>
+        <tr><td>Maturador (cana)</td><td>Etefon ou sulfometuron</td><td>R$ 70–150</td><td>R$ 35–50</td><td>R$ 25–35</td><td>R$ 95–200</td></tr>
+        <tr><td>Fungicida café (triazol)</td><td>Tebuconazol / ciproconazol</td><td>R$ 80–160</td><td>R$ 45–60</td><td>R$ 30–45</td><td>R$ 110–220</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="source-note">Fontes: CONAB Custo de Produção 2024/25, CEPEA/ESALQ, cotações de distribuidoras Centro-Oeste e Sul (out–nov/2024). Aplicação aérea inclui combustível + piloto + depreciação de aeronave. Aplicação terrestre inclui combustível + operador + depreciação pulverizador autopropelido.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     RESISTÊNCIA
+═══════════════════════════════════════════════ -->
+<div id="resistencia" class="section">
+  <div class="sect-header">
+    <div class="sect-num">06</div>
+    <div class="sect-title-block">
+      <h2>Manejo de Resistência</h2>
+      <p>Situação das resistências confirmadas no Brasil e estratégias de rotação de mecanismos de ação</p>
+    </div>
+  </div>
+
+  <div class="alert">
+    <strong>Situação crítica — Brasil lidera em número de biótipos resistentes</strong>
+    O Brasil concentra o maior número de biótipos de plantas daninhas resistentes em cultura de soja no mundo, e possui resistência de insetos praga em múltiplas culturas. A rotação de mecanismos de ação é a única estratégia preventiva eficaz — e a mais barata. Cada novo caso de resistência confirmado custa ao setor de R$ 1–5 bi em perdas cumulativas ao longo de uma década.
+  </div>
+
+  <div class="subsect">Resistência de plantas daninhas — confirmados no Brasil 2024</div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Espécie</th><th>Cultura</th><th>HRAC resistente</th><th>Estados afetados</th><th>Alternativa</th></tr></thead>
+      <tbody>
+        <tr><td>Buva (<em>Conyza sumatrensis</em>)</td><td>Soja, milho</td><td>9, 2, 4, 27 (resistência múltipla)</td><td>PR, RS, MT, GO, SP</td><td>Paraquat + diurón no outono/inverno; PPO inibidores</td></tr>
+        <tr><td>Capim-amargoso (<em>Digitaria insularis</em>)</td><td>Soja, milho, pastagens</td><td>9 (glifosato)</td><td>Nacional — confirmado em todos os estados produtores</td><td>Fluazifop, haloxifop (pós); glufosinate + diurón (pré)</td></tr>
+        <tr><td>Azevém (<em>Lolium multiflorum</em>)</td><td>Soja, trigo, pastagens</td><td>1, 2, 9</td><td>RS, SC, PR</td><td>Clethodim, pinoxaden; rotação com 2ª safra de verão</td></tr>
+        <tr><td>Leiteiro (<em>Euphorbia heterophylla</em>)</td><td>Soja</td><td>2 (ALS), 5</td><td>PR, RS, MS</td><td>PPO inibidores (lactofen, flumioxazina); HRAC 4</td></tr>
+        <tr><td>Capim-pé-de-galinha (<em>Eleusine indica</em>)</td><td>Milho, soja</td><td>1 (ACCase), 9</td><td>SP, PR, MT</td><td>HRAC 15 (pré); rotar ACCase com HRAC 2 ou 27</td></tr>
+        <tr><td>Picão-preto (<em>Bidens pilosa</em>)</td><td>Milho, soja</td><td>2 (ALS)</td><td>PR, RS, SP</td><td>HRAC 27, HRAC 4; rotar com HRAC 5 ou 14</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="subsect" style="margin-top:1.5rem">Resistência de fungos — fungicidas na soja</div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>FRAC</th><th>Grupo</th><th>Nível de sensibilidade reduzida</th><th>Recomendação</th></tr></thead>
+      <tbody>
+        <tr><td>FRAC 3</td><td>DMI / triazóis</td><td>Redução 40–65% de eficiência vs. isolados suscetíveis (Embrapa 2023)</td><td>NUNCA usar triazol isolado; sempre misturar com FRAC 7 ou 11</td></tr>
+        <tr><td>FRAC 11</td><td>Estrobilurinas (QoI)</td><td>Redução ~30% de eficiência; mutação F129L confirmada</td><td>Misturar com FRAC 3 ou 7; não usar como único modo de ação</td></tr>
+        <tr><td>FRAC 7</td><td>SDHI</td><td>Monitoramento — ainda alta eficiência em 2024</td><td>Preservar; usar em rotação estratégica com FRAC 3+11</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="subsect" style="margin-top:1.5rem">Resistência de insetos — alertas ativos 2024</div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Praga</th><th>Cultura</th><th>IA / tecnologia com resistência confirmada</th><th>Alternativa imediata</th></tr></thead>
+      <tbody>
+        <tr><td>Helicoverpa armigera</td><td>Soja, algodão, milho</td><td>Espinosade (campo MT/BA); clorantraniliprole (monitoramento)</td><td>Rotação IRAC 28→5→11→22; biológico HearNPV + Bt</td></tr>
+        <tr><td>Spodoptera frugiperda</td><td>Milho, soja</td><td>Cry1F (Bt transgênico); espinosade (MT, MS); piretroides (histórico)</td><td>Rotação IRAC 28→5→22→11; refúgio obrigatório; biológico</td></tr>
+        <tr><td>Mosca-branca biótipo B/Q</td><td>Soja, tomate</td><td>Neonicotinóides (biótipos isolados — monitoramento)</td><td>Spiromesifeno (IRAC 23); bifenazate; Beauveria bassiana</td></tr>
+        <tr><td>Bemisia tabaci</td><td>Soja</td><td>Imidacloprido (redução eficiência em campos SP)</td><td>Flupyradifurone, spiromesifeno, rotar grupos</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="subsect" style="margin-top:1.5rem">Princípios do manejo de resistência (MIR)</div>
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">Para herbicidas</div>
+      <ul style="font-size:12.5px; color:rgba(232,240,245,0.7); line-height:1.9; padding-left:1.25rem">
+        <li>Nunca usar o mesmo HRAC por mais de 2 anos consecutivos na mesma área</li>
+        <li>Combinar mecanismos de ação diferentes na mesma aplicação (mistura de tanque)</li>
+        <li>Rotação de culturas é a ferramenta mais eficaz de longo prazo</li>
+        <li>Monitorar populações suspeitas antes de mudar de produto</li>
+        <li>Aplicar doses completas — doses sub-letais aceleram a seleção de resistência</li>
+        <li>Incorporar manejo mecânico (roçagem, cultivador) como complemento</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title">Para fungicidas e inseticidas</div>
+      <ul style="font-size:12.5px; color:rgba(232,240,245,0.7); line-height:1.9; padding-left:1.25rem">
+        <li>Sempre misturar 2–3 mecanismos de ação distintos em cada aplicação</li>
+        <li>Rotacionar grupos (FRAC / IRAC) entre aplicações consecutivas na mesma safra</li>
+        <li>Monitorar eficiência de campo a cada safra — resposta abaixo de 70% é sinal de alerta</li>
+        <li>Usar biológicos como parte obrigatória do programa — não como substituto</li>
+        <li>Respeitar IHM (intervalo de hora de mistura) e período de carência</li>
+        <li>Cumprir refúgio obrigatório para milho e soja Bt (20% da área)</li>
+      </ul>
+    </div>
+  </div>
+  <div class="source-note">Fontes: HRAC BR 2024, FRAC BR 2024, IRAC BR 2024, Embrapa Soja, SBCPD, CropLife Brasil. Resistência confirmada = bioensaios laboratoriais com fator de resistência &gt;5x.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     FONTES
+═══════════════════════════════════════════════ -->
+<div id="fontes" class="section">
+  <div class="sect-header">
+    <div class="sect-num">07</div>
+    <div class="sect-title-block">
+      <h2>Fontes e Referências</h2>
+      <p>Bases de dados, publicações e premissas utilizadas neste documento</p>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">Fontes primárias — dados de área, produção e mercado</div>
+      <ul style="font-size:12.5px; color:rgba(232,240,245,0.7); line-height:2; padding-left:1.25rem">
+        <li>CONAB — Levantamento de Safra 2024/25 (estimativas)</li>
+        <li>IBGE — Pesquisa Agrícola Municipal (PAM) 2023/24</li>
+        <li>MAPA — Anuário Estatístico da Agricultura 2024</li>
+        <li>Embrapa — Tecnologias de Produção de Soja, Milho, Cana e Café (edições 2022–2024)</li>
+        <li>PROCAFÉ — Anuário Brasileiro do Café 2024</li>
+        <li>CTC (Centro de Tecnologia Canavieira) — Relatório de Variedades e Pragas 2024</li>
+        <li>UNICA — Relatório de Safra 2024/25</li>
+        <li>ABIC / BSCA — Indicadores do setor cafeeiro 2024</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title">Fontes primárias — defensivos, resistência e custos</div>
+      <ul style="font-size:12.5px; color:rgba(232,240,245,0.7); line-height:2; padding-left:1.25rem">
+        <li>SINDIVEG — Mercado de defensivos no Brasil 2024</li>
+        <li>CropLife Brasil — Relatório de Biológicos e Mercado 2024</li>
+        <li>AGROFIT/MAPA — Sistema de agrotóxicos fitossanitários</li>
+        <li>HRAC (Herbicide Resistance Action Committee) — BR 2024</li>
+        <li>FRAC (Fungicide Resistance Action Committee) — BR 2024</li>
+        <li>IRAC (Insecticide Resistance Action Committee) — BR 2024</li>
+        <li>SBCPD — Plantas Daninhas Resistentes no Brasil 2024</li>
+        <li>CEPEA/ESALQ — Custos de produção agrícola 2024/25</li>
+        <li>Andav — Painel de preços de defensivos (out–nov/2024)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title">Publicações científicas de referência</div>
+      <ul style="font-size:12.5px; color:rgba(232,240,245,0.7); line-height:2; padding-left:1.25rem">
+        <li>Embrapa Soja — Reunião de Pesquisa de Soja 2024</li>
+        <li>Embrapa Milho e Sorgo — Circular Técnica 2024</li>
+        <li>IAC / APTA — Tecnologia Cafeeira 2023–2024</li>
+        <li>Revista Brasileira de Herbicidas (RBHERB) — 2023–2024</li>
+        <li>Tropical Plant Pathology — Edições 2023–2024</li>
+        <li>Pesquisa Agropecuária Brasileira (PAB/Embrapa) — 2023–2024</li>
+        <li>EMATER-MG — Boletim de Recomendações Cafeicultura 2024</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title">Premissas e limitações</div>
+      <div style="font-size:12.5px; color:rgba(232,240,245,0.7); line-height:1.75">
+        <p style="margin-bottom:.75rem">Doses e recomendações refletem as práticas predominantes no Centro-Sul do Brasil (MT, GO, PR, RS, SP, MG). Regiões como MATOPIBA e Norte podem ter janelas deslocadas em 1–2 meses e doses ajustadas conforme solo e clima local.</p>
+        <p style="margin-bottom:.75rem">Custos em R$/ha referem-se à safra 2024/25. Flutuações cambiais (importação de ~90% dos princípios ativos) podem alterar os valores em ±15–25%.</p>
+        <p style="margin-bottom:.75rem">Todos os produtos mencionados devem ser aplicados estritamente conforme bula registrada no MAPA. Este documento tem fins de inteligência de mercado e não substitui a recomendação de um engenheiro agrônomo habilitado.</p>
+        <p>Dados de custos operacionais: médias ponderadas de cotações de distribuidoras do Centro-Oeste e Sul (outubro–novembro 2024). Variações regionais de ±20% são esperadas.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-logo">Manejo Fitossanitário Brasil 2024/25</div>
+  <div class="footer-meta">
+    Relatório técnico gerado com base em fontes primárias<br>
+    Embrapa · CONAB · IBGE · MAPA · Procafé · CTC · Sindiveg · CropLife Brasil
+  </div>
+</div>
+
+</div><!-- /page-wrap -->
+
+<script>
+const MESES = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
+
+function showSection(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.currentTarget.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function showTab(cult, tab) {
+  const sec = document.getElementById(cult);
+  sec.querySelectorAll('.tab-content').forEach(s => s.classList.remove('active'));
+  sec.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  const t = document.getElementById(cult + '-' + tab);
+  if (t) t.classList.add('active');
+  event.currentTarget.classList.add('active');
+}
+
+/* ── CALENDAR BUILDER ── */
+const calData = {
+  soja: {
+    rows: [
+      { label: 'Fenologia', sub: 'plantio / colheita',
+        cells: ['e','e','e','e','e','e','e','e','e','pl','pl','pl','pl','pl','h','h','e','e','e','e','e','e','e','e'] },
+      { label: 'Herbicidas', sub: 'glifosato, metribuzin, cloransulam',
+        cells: ['e','e','e','e','e','e','e','e','hl','h','h','hl','hl','e','e','e','e','e','e','e','e','e','e','e'] },
+      { label: 'Fungicidas', sub: 'SDHI + estrobilurina + triazol',
+        cells: ['e','e','e','e','e','e','e','e','e','e','e','fl','f','f','fl','e','e','e','e','e','e','e','e','e'] },
+      { label: 'Inseticidas', sub: 'diamidas, piretroides, Bt',
+        cells: ['e','e','e','e','e','e','e','e','e','il','il','i','i','il','e','e','e','e','e','e','e','e','e','e'] }
+    ]
+  },
+  milho: {
+    rows: [
+      { label: 'Fenologia', sub: '1ª safra (Sul) + 2ª safra (MT/GO)',
+        cells: ['h','h','h','e','e','e','e','e','pl','pl','pl','e','pl','pl','e','e','e','e','e','e','e','e','e','e'] },
+      { label: 'Herbicidas', sub: 'atrazina, nicosulfuron, tembotrione',
+        cells: ['e','e','e','e','e','e','e','e','h','h','hl','h','h','hl','e','e','e','e','e','e','e','e','e','e'] },
+      { label: 'Fungicidas', sub: 'piraclostrobina, propiconazol',
+        cells: ['e','e','e','e','e','e','e','e','e','e','fl','f','fl','f','f','fl','e','e','e','e','e','e','e','e'] },
+      { label: 'Inseticidas', sub: 'clorantraniliprole, espinosade, Bt',
+        cells: ['e','e','e','e','e','e','e','e','il','il','i','i','i','i','il','e','e','e','e','e','e','e','e','e'] }
+    ]
+  },
+  cana: {
+    rows: [
+      { label: 'Safra / plantio', sub: 'ciclo perene — ratoon',
+        cells: ['h','h','h','h','h','h','h','h','pl','pl','pl','pl','pl','pl','pl','pl','e','e','e','e','e','e','e','e'] },
+      { label: 'Herbicidas', sub: 'ametrina, diurón, s-metolacloro',
+        cells: ['e','e','e','hl','h','h','hl','e','h','h','hl','e','e','e','e','e','e','e','e','e','e','e','e','e'] },
+      { label: 'Maturadores', sub: 'etefon, sulfometuron',
+        cells: ['e','e','e','e','e','e','e','e','e','e','e','e','e','e','f','f','fl','e','e','e','e','e','e','e'] },
+      { label: 'Inseticidas / biológicos', sub: 'Cotesia, Trichogramma, Metarhizium',
+        cells: ['e','e','e','i','i','i','il','il','i','i','il','il','e','e','e','e','e','e','e','e','e','e','e','e'] }
+    ]
+  },
+  cafe: {
+    rows: [
+      { label: 'Fenologia', sub: 'floração / colheita / brotação',
+        cells: ['e','e','h','h','h','h','h','h','pl','pl','pl','pl','pl','pl','pl','pl','pl','pl','e','e','e','e','e','e'] },
+      { label: 'Herbicidas', sub: 'glifosato (linha), oxyfluorfen',
+        cells: ['e','h','h','h','hl','h','h','hl','e','e','e','hl','e','e','e','e','e','e','e','e','e','e','e','e'] },
+      { label: 'Fungicidas', sub: 'triazol, cobre, estrobilurina',
+        cells: ['fl','f','f','fl','e','e','e','e','fl','f','f','f','e','e','e','e','e','e','e','e','e','e','e','e'] },
+      { label: 'Inseticidas', sub: 'espinosade, Beauveria bassiana',
+        cells: ['i','i','il','il','i','il','il','il','il','i','i','i','e','e','e','e','e','e','e','e','e','e','e','e'] }
+    ]
+  }
+};
+
+const cellClass = { e:'c-empty', pl:'c-plant', h:'c-harvest', hl:'c-herb-l', H:'c-herb',
+  f:'c-fung', fl:'c-fung-l', i:'c-insec', il:'c-insec-l' };
+// remap shorthand
+const cm = { e:'c-empty', pl:'c-plant', h:'c-harvest',
+  hl:'c-herb-l', h2:'c-herb',
+  fl:'c-fung-l', f:'c-fung',
+  il:'c-insec-l', i:'c-insec' };
+
+function buildCalendar(cult) {
+  const el = document.getElementById(cult + '-cal-table');
+  if (!el) return;
+  const d = calData[cult];
+  const months = [...MESES, ...MESES];
+  let html = '<table class="cal-table"><thead><tr><th style="text-align:left;min-width:130px">Tipo</th>';
+  months.forEach((m, i) => {
+    const yr = i < 12 ? 'Ano 1' : 'Ano 2';
+    html += `<th title="${yr}">${m}</th>`;
+  });
+  html += '</tr></thead><tbody>';
+  d.rows.forEach(row => {
+    html += `<tr><td class="cal-row-label">${row.label}<span class="cal-row-sub">${row.sub}</span></td>`;
+    row.cells.forEach(c => {
+      let cls = 'c-empty';
+      if (c === 'e') cls = 'c-empty';
+      else if (c === 'pl') cls = 'c-plant';
+      else if (c === 'h') cls = 'c-harvest';
+      else if (c === 'hl') cls = 'c-herb-l';
+      else if (c === 'h2') cls = 'c-herb';
+      else if (c === 'f') cls = 'c-fung';
+      else if (c === 'fl') cls = 'c-fung-l';
+      else if (c === 'i') cls = 'c-insec';
+      else if (c === 'il') cls = 'c-insec-l';
+      html += `<td><div class="cal-cell ${cls}"></div></td>`;
+    });
+    html += '</tr>';
+  });
+  html += '</tbody></table>';
+  el.innerHTML = html;
+}
+
+['soja','milho','cana','cafe'].forEach(c => buildCalendar(c));
+
+/* fix soja: 'h' in cells was being caught by harvest — remap herb to explicit h2 */
+
+/* ── HEATMAP DATA ── */
+const HM_MESES = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
+const hmData = [
+  // HERBICIDAS
+  { nome:'Alion® PRO', tipo:'herb', vals:[1,0,0,2,5,5,5,5,3,2,1,0] },
+  { nome:'Alion®', tipo:'herb', vals:[0,0,0,2,4,5,5,5,3,2,0,0] },
+  { nome:'Provence® Total', tipo:'herb', vals:[0,0,0,2,4,5,5,4,2,1,0,0] },
+  { nome:'Velpar® / Combine®', tipo:'herb', vals:[1,1,1,3,5,5,5,5,4,3,2,1] },
+  { nome:'Boral® (Sulfentrazona)', tipo:'herb', vals:[0,0,0,2,4,5,5,4,3,2,1,0] },
+  { nome:'Gamit® (Clomazona)', tipo:'herb', vals:[0,0,0,2,4,5,5,4,3,2,1,0] },
+  { nome:'Sencor® (Metribuzin)', tipo:'herb', vals:[0,0,0,1,3,4,4,4,3,2,1,0] },
+  { nome:'Plateau® (Imazapic)', tipo:'herb', vals:[0,0,0,1,3,4,4,3,2,1,0,0] },
+  { nome:'Roundup® (Glifosato)', tipo:'herb', vals:[1,1,2,3,4,5,5,5,4,3,2,1] },
+  // INSETICIDAS
+  { nome:'Curbix® (Etiprole)', tipo:'insec', vals:[1,0,0,4,5,5,5,3,1,0,0,0] },
+  { nome:'Regent® 800 WG (Fipronil)', tipo:'insec', vals:[0,0,0,0,0,0,0,0,5,5,5,3] },
+  { nome:'Belt® (Flubendiamida)', tipo:'insec', vals:[1,1,0,0,0,1,3,5,5,5,3,1] },
+  { nome:'Premio® (Clorantraniliprole)', tipo:'insec', vals:[1,1,0,1,2,3,4,5,5,4,2,1] },
+  { nome:'Ampligo® (Cloran.+Lambda)', tipo:'insec', vals:[0,0,0,2,4,4,4,3,2,1,0,0] },
+  { nome:'Frondeo® (Plinazolin)', tipo:'insec', vals:[0,0,0,4,5,5,4,1,0,0,0,0] },
+  { nome:'Evidence® (Imidacloprido)', tipo:'insec', vals:[0,0,0,0,0,0,0,0,4,5,5,3] },
+  { nome:'Verimark® (Ciantraniliprole)', tipo:'insec', vals:[0,0,0,1,2,3,3,3,5,5,3,1] },
+  { nome:'Actara® (Tiametoxam)', tipo:'insec', vals:[0,0,0,3,5,5,4,2,1,0,0,0] },
+  { nome:'Engeo® Pleno S (Tiam.+Lambda)', tipo:'insec', vals:[0,0,0,3,5,5,4,2,1,0,0,0] },
+];
+
+/* ── HEATMAP: CSS-grid renderer ── */
+const HM_LABELS = ['Sem uso','Pontual','Baixo','Moderado','Intenso','Muito alto'];
+const SAFRA_COLS = new Set([4,5,6,7,8]); /* mai–set, 0-indexed */
+
+function buildHeatmap(filter) {
+  const rows = filter === 'todos' ? hmData : hmData.filter(r => r.tipo === filter);
+  const grid = document.getElementById('hm-grid');
+  if (!grid) return;
+  grid.innerHTML = '';
+
+  /* ── month header row ── */
+  const corner = document.createElement('div');
+  corner.className = 'hm-spacer';
+  grid.appendChild(corner);
+
+  HM_MESES.forEach((m, i) => {
+    const el = document.createElement('div');
+    el.className = 'hm-month-label ' + (SAFRA_COLS.has(i) ? 'safra' : 'off');
+    el.textContent = m;
+    grid.appendChild(el);
+  });
+
+  /* ── data rows ── */
+  let prevTipo = null;
+  rows.forEach(row => {
+
+    /* group divider */
+    if (row.tipo !== prevTipo) {
+      const div = document.createElement('div');
+      div.className = 'hm-group-label ' + row.tipo;
+      div.textContent = row.tipo === 'herb' ? 'Herbicidas' : 'Inseticidas';
+      grid.appendChild(div);
+    }
+    prevTipo = row.tipo;
+
+    /* product label */
+    const lbl = document.createElement('div');
+    lbl.className = 'hm-prod';
+    lbl.textContent = row.nome;
+    grid.appendChild(lbl);
+
+    /* cells */
+    row.vals.forEach((v, mi) => {
+      const cell = document.createElement('div');
+      cell.className = 'hm-cell v' + v + (SAFRA_COLS.has(mi) ? ' safra-col' : '');
+      if (v > 0) cell.title = HM_LABELS[v];
+      grid.appendChild(cell);
+    });
+  });
+}
+
+function hmFilter(f, btn) {
+  document.querySelectorAll('.hm-filter-btn').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  buildHeatmap(f);
+}
+
+/* keep old alias so existing onclick="filterHeatmap" still works */
+function filterHeatmap(f, btn) { hmFilter(f, btn); }
+
+/* ── CALENDAR EXEC DATA ── */
+const calExecData = [
+  { mes:'Janeiro', estagio:'Cana em crescimento / pós-colheita precoce (soca nova)', herb:'Velpar® / Combine® (0–15 DAC)<br>Alion® PRO (solos argilosos)', insec:'Monitoramento de broca (amostragem)', motivo:'Soca nova emergindo — janela crítica de controle de daninhas. Aplicação de pré-emergente imediatamente após o corte para evitar competição precoce.' },
+  { mes:'Fevereiro', estagio:'Soca jovem (30–60 DAC) / Período chuvoso', herb:'Roundup® dirigido (se escapes)<br>Boral® (tiririca emergente)', insec:'1ª aplicação foliar se Spodoptera presente', motivo:'Escapes do programa pré-emergente exigem complementação com pós-emergência dirigida. Alta umidade favorece desenvolvimento de daninhas resistentes.' },
+  { mes:'Março', estagio:'Crescimento vegetativo ativo (60–90 DAC)', herb:'Glifosato dirigido (braquiária estabelecida)<br>Plateau® (merremia, tiririca)', insec:'Monitoramento broca e cigarrinha', motivo:'Cana em fechamento. Última janela de eficiência para herbicidas pós-emergentes antes do dossel. Monitoramento ativo de pragas.' },
+  { mes:'Abril', estagio:'Pleno desenvolvimento vegetativo / Início de safra mecânica', herb:'Glifosato dirigido pontual (escapes tardios)', insec:'Curbix® foliar (início voo cigarrinha)<br>Frondeo® / Actara® (adultos Mahanarva)<br>Liberação Metarhizium anisopliae', motivo:'Início do período crítico de cigarrinha-das-raízes. Monitoramento semanal de adultos. Ativar programa biológico (Metarhizium) + químico (Curbix®) conforme ND.' },
+  { mes:'Maio', estagio:'Safra plena — colheita em andamento', herb:'Alion® PRO / Velpar® (nova soca pós-colheita)', insec:'Curbix® sulco (nova soca)<br>Regent® 800 WG (novas áreas plantio)<br>Frondeo® / Engeo® (cigarrinha adulta pico)<br>Liberação Trichogramma galloi', motivo:'Pico de colheita = nova soca gerada continuamente. Cada área colhida deve receber herbicida pré-emergente em até 15 dias. Cigarrinha atinge pico — duplo ataque (químico + biológico).' },
+  { mes:'Junho', estagio:'Safra plena — soca em diferentes estágios', herb:'Velpar® / Combine® (socas novas)<br>Alion® PRO (novas áreas)', insec:'Belt® / Premio® foliar (broca > 5% intensidade)<br>Curbix® (novas socas)<br>Liberação Cotesia flavipes', motivo:'Broca-do-colmo atinge pico de postura. Cotesia flavipes entra em cena nas áreas com lagartas nos colmos. Controle químico complementar onde biológico insuficiente.' },
+  { mes:'Julho', estagio:'Meio de safra — soca maturando', herb:'Glifosato dirigido (manutenção)<br>Boral® (tiririca resistente)', insec:'Belt® / Ampligo® (broca + Spodoptera)<br>Liberação 2ª Trichogramma<br>Monitoramento Curbix® necessário?', motivo:'Safra intensa. Manutenção de limpeza nas socas. Broca em segundo pico de postura — 2ª liberação de Trichogramma. Monitoramento contínuo das novas socas.' },
+  { mes:'Agosto', estagio:'Final de safra / Soca com 90–120 DAC', herb:'Glifosato subdose (maturador, 40–50 dias antes colheita)<br>Curavial / Grasp (maturação)', insec:'Actara® / Engeo® (cigarrinha reduz)<br>Monitoramento final de broca', motivo:'Início das aplicações de maturadores para antecipar e otimizar ATR. Cigarrinha começa a recuar. Maturação química essencial para elevar pol% antes da colheita.' },
+  { mes:'Setembro', estagio:'Pré-colheita / Maturação — cana-planta: início de plantio', herb:'Maturadores (Ethrel, Grasp, Roundup subdose)<br>Pré-emergência em cana-planta nova: Alion® PRO + Sencor®', insec:'Regent® 800 WG / Evidence® no sulco (plantio cana-planta)<br>Premio® / Verimark® (sulco plantio)', motivo:'Dupla frente: colheita de cana matura + plantio de cana-planta nova. Tratamento do sulco no plantio é obrigatório para proteger toletes de cupins, Sphenophorus e broca inicial.' },
+  { mes:'Outubro', estagio:'Plantio intenso de cana-planta / Início período chuvoso', herb:'Alion® PRO (pré-emergência cana-planta)<br>Provence® Total (áreas com palha densa)<br>Gamit® + Velpar® (mistura padrão)', insec:'Regent® 800 WG + Evidence® (sulco)<br>Curbix® (sulco, áreas com histórico cigarrinha)', motivo:'Maior volume de plantio do ano. Chuvas chegam e ativam herbicidas. Proteção do sulco é crítica — Regent® + imidacloprido padrão. Braquiária germina rapidamente com a umidade.' },
+  { mes:'Novembro', estagio:'Cana-planta estabelecida (30–60 DAP) / Fim da safra', herb:'Pós-emergência precoce cana-planta (Sencor®, Plateau®)<br>Glifosato dirigido (escapes)', insec:'Belt® / Premio® (Spodoptera em cana-planta jovem)<br>Monitoramento de broca', motivo:'Cana-planta jovem suscetível à Spodoptera no cartucho. Pós-emergência complementar para escapes do pré-emergente. Encerramento da safra com avaliação de biológicos.' },
+  { mes:'Dezembro', estagio:'Cana-planta em crescimento (60–90 DAP) / Entressafra', herb:'Glifosato dirigido (manutenção limpeza)<br>Boral® (tiririca emergente)', insec:'Monitoramento de pragas de solo<br>Planejamento do programa biológico', motivo:'Período chuvoso intenso favorece daninhas. Manutenção de limpeza nas cana-plantas. Período de planejamento para o próximo programa fitossanitário (safra seguinte).' },
+];
+
+function buildCalExec() {
+  const tbody = document.getElementById('cal-exec-body');
+  if (!tbody) return;
+  tbody.innerHTML = calExecData.map(r => `
+    <tr>
+      <td style="font-weight:600;color:var(--lime2);white-space:nowrap">${r.mes}</td>
+      <td style="font-size:11px">${r.estagio}</td>
+      <td style="font-size:11px;line-height:1.6">${r.herb}</td>
+      <td style="font-size:11px;line-height:1.6">${r.insec}</td>
+      <td style="font-size:11px;line-height:1.6;color:rgba(232,240,245,0.7)">${r.motivo}</td>
+    </tr>
+  `).join('');
+}
+
+/* init on first load */
+setTimeout(() => { buildHeatmap('todos'); buildCalExec(); }, 300);
+
+calData.soja.rows[1].cells = calData.soja.rows[1].cells.map(c => c === 'h' ? 'h2' : c);
+calData.milho.rows[1].cells = calData.milho.rows[1].cells.map(c => c === 'h' ? 'h2' : c);
+calData.cana.rows[1].cells = calData.cana.rows[1].cells.map(c => c === 'h' ? 'h2' : c);
+calData.cafe.rows[1].cells = calData.cafe.rows[1].cells.map(c => c === 'h' ? 'h2' : c);
+['soja','milho','cana','cafe'].forEach(c => buildCalendar(c));
+</script>
+</body>
+</html>
